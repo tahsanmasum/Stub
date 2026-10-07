@@ -1,0 +1,110 @@
+rules_version = '2';
+// Stub: Firestore security rules. Paste into Firebase console > Firestore > Rules > Publish.
+// Replace organizer@stub.demo below with YOUR first owner email (same as adminEmails in STUB_CONFIG).
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() { return request.auth != null; }
+    function myEmail() { return signedIn() ? request.auth.token.email : ''; }
+    function bootstrap() { return myEmail() in ['organizer@stub.demo']; }
+    function siteDoc() { return /databases/$(database)/documents/settings/site; }
+    function isOrganizer() { return signedIn() && (bootstrap() || (exists(siteDoc()) && myEmail() in get(siteDoc()).data.adminEmails)); }
+    function isOwner() { return signedIn() && (bootstrap() || (exists(siteDoc()) && myEmail() in get(siteDoc()).data.ownerEmails)); }
+    function eventDoc(id) { return get(/databases/$(database)/documents/events/$(id)).data; }
+    function promoDoc(code) { return /databases/$(database)/documents/promos/$(code); }
+    function freePromo(d) {
+      return 'promo' in d && exists(promoDoc(d.promo.code)) && get(promoDoc(d.promo.code)).data.active == true
+        && (get(promoDoc(d.promo.code)).data.type == 'percent' ? get(promoDoc(d.promo.code)).data.value >= 100 : get(promoDoc(d.promo.code)).data.value >= eventDoc(d.eventId).fee);
+    }
+    function okNewTicket(d) {
+      return (d.status in ['pending', 'waitlisted']
+          || (d.status == 'confirmed' && eventDoc(d.eventId).autoConfirm == true && !('payment' in d && d.payment.status == 'submitted')))
+        && (!('payment' in d) || d.payment.status in ['submitted', 'due'] || (d.payment.method == 'Promo' && d.payment.amount == 0 && freePromo(d)))
+        && (!('accountId' in d) || d.accountId == null || (signedIn() && d.accountId == request.auth.uid))
+        && d.name is string && d.name.size() >= 3 && d.email is string && d.email.matches('.+@.+[.].+');
+    }
+
+    match /settings/site { allow read: if true; allow write: if isOwner(); }
+    match /stats/site {
+      allow read: if true;
+      allow write: if isOrganizer() || (request.resource.data.keys().hasOnly(['visits'])
+        && request.resource.data.visits == (resource == null ? 1 : resource.data.visits + 1));
+    }
+    match /fests/{id}  { allow read: if true; allow write: if isOrganizer(); }
+    match /events/{id} { allow read: if true; allow write: if isOrganizer(); }
+    match /notes/{id}  { allow read: if true; allow write: if isOrganizer(); }
+
+    // Public seat-count record, no personal data. Must match the ticket written in the same batch.
+    match /regs/{id} {
+      allow read: if true;
+      allow create: if isOrganizer() || (request.resource.data.keys().hasOnly(['eventId', 'festId', 'status', 'createdAt', 'updatedAt'])
+        && getAfter(/databases/$(database)/documents/tickets/$(id)).data.status == request.resource.data.status);
+      allow update: if isOrganizer() || (request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status', 'updatedAt'])
+        && request.resource.data.status == 'cancelled' && resource.data.status in ['pending', 'confirmed', 'waitlisted']);
+      allow delete: if isOrganizer();
+    }
+
+    // Full registration. Doc id = ticket code, so the code is the key. Organizers and the owning account can list.
+    match /tickets/{id} {
+      allow get: if true;
+      allow list: if isOrganizer() || (signedIn() && resource.data.accountId == request.auth.uid);
+      allow create: if isOrganizer() || okNewTicket(request.resource.data);
+      allow update: if isOrganizer() || (resource.data.status in ['pending', 'confirmed', 'waitlisted']
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['name', 'phone', 'institution', 'level', 'teamName', 'members', 'answers', 'status', 'updatedAt', 'payment'])
+        && request.resource.data.status in [resource.data.status, 'cancelled']
+        && (!request.resource.data.diff(resource.data).affectedKeys().hasAny(['payment'])
+            || (resource.data.payment.status == 'rejected' && request.resource.data.payment.status == 'submitted')));
+      allow delete: if isOrganizer();
+    }
+
+    // One doc per used transaction ID. Create-only for the public, so a TrxID can never be reused.
+    match /trx/{id} { allow create: if true; allow read, update, delete: if isOrganizer(); }
+
+    match /accounts/{uid} {
+      allow read: if isOrganizer() || (signedIn() && request.auth.uid == uid);
+      allow create: if signedIn() && request.auth.uid == uid && request.resource.data.get('blocked', false) == false;
+      allow update: if isOrganizer() || (signedIn() && request.auth.uid == uid
+        && !request.resource.data.diff(resource == null ? {} : resource.data).affectedKeys().hasAny(['blocked', 'email']));
+      allow delete: if isOrganizer();
+    }
+
+    match /activity/{id} {
+      allow create: if request.resource.data.t is number
+        && request.resource.data.keys().hasOnly(['t', 'type', 'sid', 'vid', 'uid', 'dev', 'src', 'path', 'ev', 'ref', 'by', 'q']);
+      allow read, delete: if isOrganizer();
+    }
+
+    // Promo codes: anyone can look up one code by name, only organizers can list them all.
+    match /promos/{code} {
+      allow get: if true;
+      allow list, create, delete: if isOrganizer();
+      allow update: if isOrganizer() || (request.resource.data.diff(resource.data).affectedKeys().hasOnly(['uses'])
+        && request.resource.data.uses == resource.data.get('uses', 0) + 1
+        && (resource.data.get('maxUses', 0) == 0 || resource.data.get('uses', 0) < resource.data.maxUses));
+    }
+
+    // Team invite links: readable by key, members can only be added one at a time up to the free slots.
+    match /invites/{key} {
+      allow get: if true;
+      allow list, delete: if isOrganizer();
+      allow create: if isOrganizer() || getAfter(/databases/$(database)/documents/tickets/$(request.resource.data.ticketId)).data.inviteKey == key;
+      allow update: if isOrganizer() || (request.resource.data.diff(resource.data).affectedKeys().hasOnly(['members', 'updatedAt'])
+        && request.resource.data.members.size() == resource.data.members.size() + 1
+        && request.resource.data.members.size() <= resource.data.slots);
+    }
+
+    // Emails for the Firebase "Trigger Email" extension (collection: mail).
+    // Participants may only queue their own registration emails; organizers can queue any.
+    match /mail/{id} {
+      allow create: if isOrganizer() || (request.resource.data.kind in ['received', 'confirmed']
+        && exists(/databases/$(database)/documents/tickets/$(request.resource.data.ticket))
+        && get(/databases/$(database)/documents/tickets/$(request.resource.data.ticket)).data.email == request.resource.data.to);
+      allow read, update, delete: if isOrganizer();
+    }
+
+    match /drafts/{id} {
+      allow create, update: if request.resource.data.keys().hasOnly(['vid', 'eventId', 'step', 'stepName', 'name', 'email', 'phone', 'institution', 'teamName', 'uid', 'startedAt', 'updatedAt', 'dev']);
+      allow delete: if true;
+      allow read: if isOrganizer();
+    }
+  }
+}
