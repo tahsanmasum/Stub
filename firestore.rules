@@ -5,7 +5,7 @@ service cloud.firestore {
   match /databases/{database}/documents {
     function signedIn() { return request.auth != null; }
     function myEmail() { return signedIn() ? request.auth.token.email : ''; }
-    function bootstrap() { return myEmail() in ['tahsaniamon@gmail.com']; }
+    function bootstrap() { return myEmail() in ['tahsanmasum2019@gmail.com']; }
     function siteDoc() { return /databases/$(database)/documents/settings/site; }
     function isOrganizer() { return signedIn() && (bootstrap() || (exists(siteDoc()) && myEmail() in get(siteDoc()).data.adminEmails)); }
     function isOwner() { return signedIn() && (bootstrap() || (exists(siteDoc()) && myEmail() in get(siteDoc()).data.ownerEmails)); }
