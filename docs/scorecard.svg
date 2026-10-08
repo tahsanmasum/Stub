@@ -86,7 +86,7 @@
 <rect x="520" y="281" width="540" height="16" rx="8" fill="#FF5A2C" class="bar b2"/>
 <text x="1208" y="295" class="sans ink sc s2" font-size="17" font-weight="700" text-anchor="end">30 <tspan class="mut" font-size="13">pts</tspan></text>
 <text x="72" y="363" class="serif ink" font-size="19" font-weight="700">Bonus — creative work</text>
-<text x="72" y="383" class="sans mut" font-size="12.5">30 extra features across 4 tiers</text>
+<text x="72" y="383" class="sans mut" font-size="12.5">31 extra features across 4 tiers</text>
 <g class="tick tk30"><circle cx="352" cy="357" r="9.5" fill="#2f7a3a"/><path d="M347.8 357 l3 3 l5.6 -6" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></g>
 <g class="tick tk31"><circle cx="378" cy="357" r="9.5" fill="#2f7a3a"/><path d="M373.8 357 l3 3 l5.6 -6" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></g>
 <g class="tick tk32"><circle cx="404" cy="357" r="9.5" fill="#2f7a3a"/><path d="M399.8 357 l3 3 l5.6 -6" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></g>

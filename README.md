@@ -10,7 +10,8 @@ Browse fests, register in a minute, pay by bKash, and get a QR ticket that gets 
 <br>
 
 [![Live demo](https://img.shields.io/badge/Live_demo-stub--drmc.vercel.app-FF5A2C?style=for-the-badge&logoColor=white)](https://stub-drmc.vercel.app)
-[![License](https://img.shields.io/badge/License-MIT-1B1210?style=for-the-badge)](LICENSE)
+[![Scorecard](https://img.shields.io/badge/Judge's_scorecard-120_pts_mapped-1B1210?style=for-the-badge)](SCORECARD.md)
+[![License](https://img.shields.io/badge/License-MIT-6A5848?style=for-the-badge)](LICENSE)
 [![Single file](https://img.shields.io/badge/Frontend-1_HTML_file-6A5848?style=for-the-badge)](index.html)
 [![No build](https://img.shields.io/badge/Build_step-none-2f7a3a?style=for-the-badge)](#5-setup-instructions)
 
@@ -26,13 +27,27 @@ Browse fests, register in a minute, pay by bKash, and get a QR ticket that gets 
 
 <br>
 
+---
+
 <div align="center">
 
-### Try it in 60 seconds
+## For the judges, first
+
+</div>
+
+<img src="docs/scorecard.svg" alt="Judging criteria — every rubric line addressed" width="100%">
+
+**Every scoring line in the rulebook is quoted verbatim and mapped to the exact screen that satisfies it, with a 4-minute route through all of them, in → [SCORECARD.md](SCORECARD.md)**
+
+The site loads with **4 fests, 11 events, ~300 registrations, 130 accounts and 279 payment records already in it.** Nothing needs to be created before you can judge it.
+
+<div align="center">
+
+### Or just try it, in 60 seconds
 
 | | |
 |---|---|
-| **1** | Open the [live demo](https://stub-drmc.vercel.app) — it loads with 4 fests, 11 events and ~300 registrations already in it |
+| **1** | Open the [live demo](https://stub-drmc.vercel.app) — sample data is already loaded |
 | **2** | Register for **AI Web Development Contest**. On the payment step, type the promo code `VOLUNTEER` |
 | **3** | Open **Organizer** → sign in with `organizer@stub.demo` / `carnival2026` |
 | **4** | Go to **Check-in**, paste the ticket code you just got, and watch the ticket get punched |
@@ -50,6 +65,10 @@ Browse fests, register in a minute, pay by bKash, and get a QR ticket that gets 
 1. [Project name](#1-project-name)
 2. [Project description](#2-project-description)
 3. [Features](#3-features)
+   · [Task 1 — Fest Directory](#task-1--fest-directory-30-pts)
+   · [Task 2 — Registration System](#task-2--registration-system-30-pts)
+   · [Task 3 — Organizer Management](#task-3--organizer-management-30-pts)
+   · [Task 4 — Bonus, ranked](#task-4--bonus-30-pts--the-extra-features-ranked)
 4. [Tech stack](#4-tech-stack)
 5. [Setup instructions](#5-setup-instructions)
 6. [Deployment URL](#6-deployment-url)
@@ -64,6 +83,13 @@ Browse fests, register in a minute, pay by bKash, and get a QR ticket that gets 
 11. [Known limitations](#11-known-limitations)
 12. [License](#12-license)
 13. [Rules and decisions](#13-rules-and-decisions)
+
+<br>
+
+**Also in this repo**
+[`SCORECARD.md`](SCORECARD.md) — rubric line by rubric line
+[`DEPLOY.md`](DEPLOY.md) — GitHub → Vercel → Firebase
+[`firestore.rules`](firestore.rules) — the security model
 
 </td>
 </tr>
@@ -105,36 +131,109 @@ Everything in between — waitlists, team invite links, promo codes, refunded se
 
 ## 3. Features
 
-### The public site
+Organised in the rulebook's own order: the three scored tasks first, each feature tagged with the scoring line it answers, then the bonus work ranked into tiers.
+
+<br>
+
+<div align="center">
+
+| Task | Points | Section |
+|---|---|---|
+| Fest Directory | 30 | [↓](#task-1--fest-directory-30-pts) |
+| Registration System | 30 | [↓](#task-2--registration-system-30-pts) |
+| Organizer Management | 30 | [↓](#task-3--organizer-management-30-pts) |
+| Bonus — creative work | 30 | [↓](#task-4--bonus-30-pts--the-extra-features-ranked) |
+
+</div>
+
+---
+
+### Task 1 — Fest Directory (30 pts)
 
 <table>
-<tr><td width="60%">
+<tr><td width="58%">
 
-- **Fest directory** sorted by what matters now: happening → upcoming → past
-- **Event cards** showing date, category, team size, deadline, live seat meter, fee and state (`Open` · `Closes tomorrow` · `Full, waitlist open` · `Registration closed`)
-- **Live search** plus category chips, fest / availability filters and three sort orders
-- **Day-by-day fest programme**
-- **Homepage news**, a countdown to the next fest, a school leaderboard and trending events
-- **FAQ** and partners, all editable by organizers
+**`1.1` Display available and upcoming fests**
+Four fests, sorted by what matters now — *happening → upcoming → past*. Each carries dates, venue, event count and a live state: `Registration open`, `Coming up`, `Finished`.
 
-</td><td width="40%">
+**`1.2` Event cards with useful information**
+No card is a bare title. Every one shows date, category, fest, team size, deadline, a **live seat meter**, the fee and a state label (`Open` · `Closes tomorrow` · `Full, waitlist open` · `Registration closed`).
 
-<img src="docs/img/02-events.jpg" alt="Event directory with filters">
+**`1.3` Search events**
+One bar in the hero, filtering as you type across titles, categories, fest names, venues and summaries. Try `robot`, `quiz`, `hack`.
+
+**`1.4` Categories and filters**
+Category chips **with live counts**, plus three dropdowns — fest, availability (`Taking registrations` · `Closing in 48 hours` · `Full or waitlist` · `Not taking registrations` · `Everything incl. past`) — and three sort orders.
+
+**`1.5` Open an event to a details page with deadline and capacity**
+**Register by** date, **Capacity** spelled out (*16 teams, plus 6 on the waitlist*), a live countdown, a fill meter, rules, prizes, venue and any organizer notice.
+
+**`1.6` General UX and responsiveness**
+Light and dark theme, বাংলা and English, verified clean at 390 / 768 / 834 / 1024 / 1440 px.
+
+</td><td width="42%">
+
+<img src="docs/img/02-events.jpg" alt="Event directory with search, category chips and filters">
+<sub>`1.2`–`1.4` — cards, chips with counts, three filters</sub>
+
+<br><br>
+
+<img src="docs/img/05-event.jpg" alt="Event detail page">
+<sub>`1.5` — deadline, capacity, countdown, seat meter</sub>
 
 </td></tr>
 </table>
 
-### Registration
+**Also here, beyond the scoring lines:** day-by-day fest programme · homepage news from organizers · a countdown to the next fest · a school leaderboard · trending events · an editable FAQ and partners strip.
 
-- Multi-step form — **about you → team → payment → review** — with inline validation for Bangladeshi phone numbers, team sizes, links and transaction IDs
-- **Capacity, deadlines and duplicates enforced.** Full events offer a waitlist; closed, paused and not-yet-open events explain exactly why
-- **Team invite links** — the lead registers, shares a link, and each teammate adds their own details
-- **Promo codes** with percent or taka off, per-event limits, expiry, and a 100% code that skips payment entirely
-- **Progress is saved** — a half-filled form comes back after a reload, and organizers can see who started but did not finish
-- **Schedule clash warning** when two of your events overlap
-- Tickets can be **edited or cancelled** until the deadline, added to a calendar, printed as PDF, or recovered on another device with code + email
+---
 
-### Payments
+### Task 2 — Registration System (30 pts)
+
+<table>
+<tr><td width="42%">
+
+<img src="docs/img/06-register.jpg" alt="Registration form">
+<sub>`2.1`–`2.2` — multi-step form with inline validation</sub>
+
+<br><br>
+
+<img src="docs/img/08-ticket.jpg" alt="Confirmation ticket">
+<sub>`2.3` — the ticket that comes out</sub>
+
+</td><td width="58%">
+
+**`2.1` Users can register for an event**
+A four-step form — **about you → team → payment → review**. No account needed; a guest can register and still manage the ticket afterwards.
+
+**`2.2` The form works correctly**
+Inline validation for Bangladeshi phone format, email, team size against the event's own min and max, URL answers and transaction-ID format. Errors appear under the exact field and clear as you fix them.
+
+**`2.3` Registration confirmation**
+A printable **admit-one ticket** with a QR code, a ticket code (`TC26-…`), a status stamp and the invite link for teammates — reachable later at `#/tickets/<code>`, and emailed when email is configured.
+
+**`2.4` Limits and deadlines work**
+Four events are deliberately left in four different states so this is testable without waiting:
+
+| Event | State |
+|---|---|
+| Robotics Challenge | **Full** → offers the waitlist |
+| Gaming Tournament | **Deadline passed** |
+| Coding Challenge | **Not open yet** |
+| Programming Contest | **Closing within 48 h** |
+
+Each refuses with its own specific reason rather than a generic error. Duplicate emails on the same event are blocked, and **a transaction ID can never be used twice**.
+
+**`2.5` View and manage your registration**
+**My tickets** — edit details, cancel (the seat returns to the waitlist), resubmit a rejected payment, add to calendar, save as PDF, copy the link. On a different device, recover a ticket with **code + email**.
+
+**`2.6` General functionality**
+Progress is saved if you reload mid-form. A **schedule-clash warning** fires when two of your events overlap. A 100% promo code skips payment entirely.
+
+</td></tr>
+</table>
+
+#### The payment desk
 
 Participants pay by **bKash, Nagad, Rocket, Upay or bank**, then enter the TrxID and the number they paid from. Cash at the desk is allowed per event.
 
@@ -144,104 +243,166 @@ Participants pay by **bKash, Nagad, Rocket, Upay or bank**, then enter the TrxID
 
 - The exact amount, the number with a **copy button**, and step-by-step instructions
 - **A transaction ID can never be used twice** — blocked in the browser *and* by a Firestore rule
-- Organizers verify from a dedicated desk, or paste their **whole bKash statement** and every matching TrxID is verified at once
+- Organizers verify from a dedicated desk, or paste their **whole bKash statement** and every matching TrxID verifies at once
 - Rejected payments come back with a reason and a **resubmit** form on the participant's own ticket
-- Check-in refuses to let an unpaid ticket through until the fee is collected
+- Check-in refuses an unpaid ticket until the fee is collected
 
 </td></tr>
 </table>
 
-### Organizer dashboard
+---
+
+### Task 3 — Organizer Management (30 pts)
 
 <div align="center">
 <img src="docs/gif/admin.gif" alt="Organizer dashboard tour: overview, live monitor, payments, check-in" width="90%">
+<br><sub>Overview → live monitor → payments → check-in, recorded from the running dashboard.</sub>
 </div>
 
+<br>
+
+**`3.1` Organizer dashboard**
+A KPI row, a 14-day registration chart, a *needs attention* queue, seats by event, top institutions and the latest registrations — plus **Today's briefing**, a written summary of the day generated by plain code from the live data, no AI involved.
+
+**`3.2` View registered participants**
+The full table of all ~300: name, email, event, team, institution, registered-at, payment state and status. Click any row for a detail drawer with their answers, team members, payment trail, history and private organizer notes.
+
+**`3.3` Search and filter participants**
+Search spans name, email, phone, team name, team members and ticket code. Filter by fest, event, status and payment state, in any combination.
+
+**`3.4` Manage participant status**
+Change any registration inline to confirmed / pending / waitlisted / rejected / cancelled / checked-in. Select rows for **bulk** confirm, waitlist, reject, check-in or export. Add walk-ins, delete registrations, verify or reject payments.
+
+**`3.5` Statistics and management tools**
+A drop-off funnel (*visited → opened an event → started a form → registered → paid*), a visits-by-hour heatmap, device and traffic-source splits, per-event conversion, money collected vs. awaiting, CSV exports everywhere, printable sign-in sheets and ID badges, fest recreation, and full backup and restore.
+
+**`3.6` General tool responsiveness**
+On small screens the sidebar becomes a scrollable tab strip and every dashboard table becomes stacked cards — verified clean at every tablet and phone size.
+
+<table>
+<tr>
+<td width="50%"><img src="docs/img/12-dashboard.jpg" alt="Organizer overview"><br><sub><code>3.1</code> — overview with today's briefing</sub></td>
+<td width="50%"><img src="docs/img/15-participants.jpg" alt="Participants table"><br><sub><code>3.2</code>–<code>3.4</code> — participants, filters, bulk actions</sub></td>
+</tr>
+<tr>
+<td width="50%"><img src="docs/img/13-monitor.jpg" alt="Live monitor"><br><sub><code>3.5</code> — funnel, heatmap, unfinished forms</sub></td>
+<td width="50%"><img src="docs/img/14-payments.jpg" alt="Payments desk"><br><sub><code>3.5</code> — match TrxIDs against a bKash statement</sub></td>
+</tr>
+</table>
+
 <details>
-<summary><b>Overview, live monitor and accounts</b> — click to expand</summary>
+<summary><b>The rest of the dashboard</b> — events, check-in, badges, settings, roles, backups</summary>
 
 <br>
 
-- **Today's briefing** — a plain-language summary written by ordinary code (no AI, no API): registrations today vs yesterday, the most popular event, what closes within 48 hours, which events are full, how much money is waiting to be matched, and who did not finish their form
-- **Live monitor** — who is on the site right now, a live activity feed, and a drop-off funnel: *visited → opened an event → started a form → registered → paid*
-- **Unfinished registrations** with name, phone, the step they reached, and a one-click reminder email
-- **Visitor analytics** — devices, traffic sources (Facebook, Messenger, Google, WhatsApp, poster QR), a visits-by-hour heatmap, and conversion per event
-- **Accounts** — everyone who signed up, when they were last seen, their tickets, and block or delete
-
-<img src="docs/img/13-monitor.jpg" alt="Live monitor">
-
-</details>
-
-<details>
-<summary><b>Running the fest</b> — events, participants, check-in, badges</summary>
-
-<br>
-
-- Create, edit, duplicate, pause or delete fests and events; set capacity, waitlist size, team size, fee, open/close times, auto-confirm and **custom questions per event**
-- **Participants table** with search across name, email, phone, team and ticket code; filters by fest, event, status and payment; inline status changes and bulk actions
+- Create, edit, duplicate, pause or delete fests and events; set capacity, waitlist size, team size, fee, open and close times, auto-confirm and **custom questions per event**
 - **Walk-in registration** at the desk, printable sign-in sheets, and **printable ID badges** for every confirmed person including teammates
 - **QR check-in** from a phone camera, with a manual code box when there is no camera; already-checked-in, cancelled and unpaid tickets are all caught
 - **Waitlist promotion is automatic** when a seat frees up
 - **Share an event** as a printable QR poster, or to Facebook and WhatsApp — poster scans are tracked as their own traffic source
-- CSV export everywhere
-
-<img src="docs/img/22-badges.jpg" alt="Printable ID badges">
-
-</details>
-
-<details>
-<summary><b>Running the site</b> — settings, roles, backups</summary>
-
-<br>
-
-- **Site settings without code** — club name, logo upload, headline, accent colour, default theme, homepage sections on/off, FAQ, partners, contact and socials, announcement bar
-- **Team roles** — Owner, Manager, Volunteer. A volunteer only ever sees check-in and a read-only participant list
+- **Site settings without code** — club name, logo upload, headline, accent colour, default theme, homepage sections on and off, FAQ, partners, contact, socials, announcement bar
+- **Team roles** — Owner, Manager, Volunteer. A volunteer only ever sees check-in, ticket artwork and a read-only participant list
 - **Backup and restore** the whole site as one JSON file
 - **Recreate a fest for next year** — copies the fest and all its events with every date shifted forward
 - **Start fresh** with a three-step setup wizard, or reload the demo data for training volunteers
-- **Confirmation emails** on confirm, payment rejection and waitlist promotion, sent from your own no-reply address
+- **Confirmation emails** on confirm, payment rejection and waitlist promotion, from your own no-reply address
+- **Ticket design** — give an event a picture and it sits behind every ticket for it, on screen, in the PDF and on the printed badge. Reachable from **Edit event**, and from its own page that volunteers can use too
 
-<img src="docs/img/18-settings.jpg" alt="Site settings">
+<table>
+<tr>
+<td width="50%"><img src="docs/img/17-checkin.jpg" alt="Check-in"><br><sub>Check-in — camera scan or typed code</sub></td>
+<td width="50%"><img src="docs/img/22-badges.jpg" alt="Printable ID badges"><br><sub>ID badges — organizer-side only, printed before the gate opens</sub></td>
+</tr>
+<tr>
+<td width="50%"><img src="docs/img/18-settings.jpg" alt="Site settings"><br><sub>Site settings — the whole site, no code</sub></td>
+<td width="50%"><img src="docs/img/16-events-admin.jpg" alt="Events admin"><br><sub>Fests and events — capacity, fees, custom questions</sub></td>
+</tr>
+</table>
 
 </details>
 
-### বাংলা and English
+---
+
+### Task 4 — Bonus (30 pts) — the extra features, ranked
+
+> *"You can implement any creative solution of your own as extra. Creativity showcase from participants will be valued in judgement."*
+
+**31 features beyond the brief**, ordered by how much each one actually changes the day of a real club fest. Each one is ranked and screenshotted again, line by line, in [SCORECARD.md § Task 4](SCORECARD.md#task-4--bonus--30-points).
+
+<img src="docs/tiers.svg" alt="30 bonus features ranked into four tiers" width="100%">
+
+<br>
+
+#### 🥇 Tier 01 · Signature — the five a Google Form can never do
+
+| | Feature | What it does |
+|---|---|---|
+| **01** | **bKash / Nagad payment desk** | A real money flow without a merchant API. Participant pays, submits the TrxID and the number they sent from. Organizer matches it — one at a time, or by **pasting their entire bKash statement**, which verifies every matching TrxID at once. A TrxID is blocked from being reused, in the browser *and* by a Firestore rule, so one payment can never cover two registrations |
+| **02** | **QR check-in at the gate** | The ticket QR, scanned by a volunteer's phone camera, with `BarcodeDetector` and a jsQR fallback and a manual code box for when there is no camera. It catches the four things that go wrong at a real gate: already checked in, cancelled, unpaid, and wrong fest |
+| **03** | **Live drop-off monitor** | Not a hit counter — a funnel: **visited → opened an event → started a form → registered → paid**, with the percentage lost at each step, who is on the site right now, a live activity feed, and a list of people who started a form and stopped, with their phone number and a one-click reminder |
+| **04** | **Full বাংলা interface** | One button switches the *entire* site, not just labels — dates, seat counts, statuses, form errors, FAQ, news. Bangla typography gets its own faces and line-height, so it never looks like English text with Bangla glyphs dropped in. Organizers write Bangla versions of the headline, announcement bar, each FAQ entry and every news post |
+| **05** | **AI help desk** | An **Ask** button on every public page, answering from the live event data — fees, deadlines, seats left, team sizes, payment numbers, FAQ, news and an *extra knowledge* box the organizer fills in. Runs on **Groq** (`openai/gpt-oss-120b`) through a serverless function so the key never reaches the browser, replies in Bangla when the site is in Bangla, and **falls back to built-in instant answers computed from the same data** when no key is set — so the button never breaks. Every question asked lands on the Live monitor, so organizers learn what belongs in the FAQ |
 
 <table>
-<tr><td width="50%">
-
-One button in the header switches the entire interface. Dates, seat counts, statuses, form errors and the FAQ all change language. Organizers can enter Bangla versions of the headline, the announcement bar, each FAQ entry and every news post.
-
-Bangla typography uses Hind Siliguri and Noto Serif Bengali with its own line-height, so it never looks like English text with Bangla glyphs dropped in.
-
-</td><td width="50%">
-
-<img src="docs/gif/theme.gif" alt="Switching dark/light theme and English/Bangla">
-
-</td></tr>
+<tr>
+<td width="50%"><img src="docs/gif/assistant.gif" alt="Asking the help desk a question"><br><sub><b>05</b> — the Ask button</sub></td>
+<td width="50%"><img src="docs/gif/theme.gif" alt="Switching theme and language"><br><sub><b>04</b> — বাংলা, and the theme switch</sub></td>
+</tr>
 </table>
 
-### AI help desk
+#### 🥈 Tier 02 · Major — real operational weight
+
+| | Feature | What it does |
+|---|---|---|
+| **06** | **Ticket artwork** | An event carries its own picture, and it sits behind every ticket for that event — on screen, in the saved PDF and on the printed ID badge. The organizer picks the focus point and how far the picture fades into the ticket, with a **legibility floor built into the design**: however light the fade is set, a wash of ticket paper stays under the name, code and stamp, so no picture can make a ticket unreadable at the gate. Pictures are downscaled in the browser first, so a 4 MB photo lands as about 25 KB. Two doors into it — inside **Edit event** for owners and managers, and a **Ticket design** page that volunteers can reach too |
+| **07** | **Promo codes** | Percent or taka off, per-event limits, usage caps, expiry dates, and a 100% code that skips payment entirely. Created by the organizer, applied live in the participant's registration form with the discount recalculated as they type |
+| **08** | **Team invite links** | The team lead registers, gets a link, shares it. Each teammate opens it and fills in their own details — no more collecting six people's data in one textarea. The link stops working once the team is full |
+| **09** | **Automatic waitlist** | A full event offers a waitlist instead of a dead end. When someone cancels, the next person is promoted automatically and told by email |
+| **10** | **Printable ID badges** | Organizer-side only — participants never see this. After confirmation, the organizer prints badges for every confirmed person *including teammates*, with name, institution, event, role and the ticket QR, laid out for a sheet of A4, and hands them out on the day |
+| **11** | **No-code site settings** | A club runs this next year without touching the code: club name, logo upload, headline, accent colour, default theme, which homepage sections appear, FAQ, partners, contact details, socials and the announcement bar — all editable from the dashboard |
+| **12** | **Team roles** | Owner, Manager, Volunteer. A volunteer signed in at the gate sees **only** check-in, a read-only participant list and ticket artwork — you can hand a phone to a junior without handing over the settings |
+| **13** | **Backup, restore and fest recreation** | The whole site exports as one JSON file and restores from it. **Recreate a fest for next year** copies a fest and all of its events with every date shifted forward, so Tech Carnival 2027 is three clicks, not three hours |
+| **14** | **Today's briefing** | A written paragraph at the top of the dashboard — registrations today vs. yesterday, the most popular event, what closes within 48 hours, which events are full, how much money is waiting to be matched, who did not finish their form. **Generated by plain code from the live data, no AI and no API call**, so it is instant, free and never wrong |
 
 <table>
-<tr><td width="50%">
-
-<img src="docs/gif/assistant.gif" alt="Asking the help desk assistant a question">
-
-</td><td width="50%">
-
-An **Ask** button on every public page answers from the live event data — fees, deadlines, seats left, team sizes, payment numbers, the FAQ, the news, and an *extra knowledge* box the organizer fills in.
-
-It runs on **Groq** (`openai/gpt-oss-120b`) through a serverless function, so the API key never reaches the browser. It replies in Bangla when the site is in Bangla.
-
-With no key configured it falls back to **built-in instant answers** computed from the same data, so the button never breaks — and every question asked shows up on the Live monitor, so organizers learn what belongs in the FAQ.
-
-</td></tr>
+<tr>
+<td width="50%"><img src="docs/img/23-ticket-art.jpg" alt="The ticket picture control inside Edit event"><br><sub><b>06</b> — the control inside <b>Edit event</b>, with a live preview</sub></td>
+<td width="50%"><img src="docs/img/25-ticket-art-live.jpg" alt="A real ticket wearing the event picture"><br><sub><b>06</b> — the result, text still fully readable</sub></td>
+</tr>
 </table>
 
-### Built to a quality floor
+#### 🥉 Tier 03 · Extra — rounds the product out
 
-`Keyboard navigable` · `Focus trapped in dialogs` · `Visible focus rings` · `prefers-reduced-motion respected` · `Semantic landmarks` · `Responsive to 390 px` · `Print stylesheets for tickets, badges, posters and certificates`
+| | Feature | What it does |
+|---|---|---|
+| **15** | **Participant accounts** | Optional. Registration works fine as a guest, but an account collects every ticket in one place across events |
+| **16** | **Certificates** | Participation certificates generated for checked-in participants, printable from their own account |
+| **17** | **Confirmation emails** | On confirm, payment rejection and waitlist promotion, sent through Firebase's Trigger Email extension from the club's own no-reply address. In demo mode the same emails are recorded with a preview |
+| **18** | **Homepage news** | Organizers post notices from the dashboard; they appear on the homepage, can be pinned, and have Bangla versions |
+| **19** | **Walk-in registration** | Someone shows up at the desk without registering — the organizer adds them in ten seconds and they get a real ticket |
+| **20** | **QR event posters** | Print a poster for an event with its own QR. Scans from it are tracked as a separate traffic source, so you learn whether the posters worked |
+| **21** | **Dark and light theme** | A real second theme, not an inverted filter. Set a default from settings; visitors override it and it sticks |
+| **22** | **Saved form progress** | A half-filled form comes back after a reload or a dropped connection — and organizers can see who started but did not finish |
+| **23** | **Schedule-clash warning** | Registering for two events that overlap raises a warning before you commit |
+
+#### ✨ Tier 04 · Polish — small things people notice
+
+| | Feature |
+|---|---|
+| **24** | **Add to calendar** — a real `.ics` file from the ticket |
+| **25** | **Print and PDF** — proper print stylesheets for tickets, badges, sign-in sheets, posters and certificates |
+| **26** | **CSV export** — on every table in the dashboard |
+| **27** | **Printable sign-in sheets** — for the gate, when phones run out of battery |
+| **28** | **Visits-by-hour heatmap** — so the club learns when to post on Facebook |
+| **29** | **School leaderboard** — which institutions are sending the most people |
+| **30** | **Fest countdown** — live on the homepage, to the next fest |
+| **31** | **Announcement bar** — a dismissible strip at the top, editable, bilingual |
+
+<br>
+
+#### Built to a quality floor
+
+`Keyboard navigable` · `Focus trapped in dialogs` · `Visible focus rings` · `prefers-reduced-motion respected` · `Semantic landmarks` · `Responsive to 390 px` · `Print stylesheets throughout` · `Zero console errors across four automated test suites`
 
 ---
 
@@ -268,11 +429,15 @@ stub/
 ├── api/
 │   └── assistant.js     Vercel serverless function; holds the Groq key server-side
 ├── firestore.rules      same rules as the block inside index.html, split out for reference
+├── SCORECARD.md         every rubric line → the screen that satisfies it
+├── DEPLOY.md            GitHub → Vercel → Firebase, step by step
 ├── docs/
 │   ├── banner.svg       animated hero (the QR in it is real — it scans to the live site)
 │   ├── flow.svg         animated pipeline diagram
+│   ├── scorecard.svg    animated judging-criteria summary
+│   ├── tiers.svg        animated bonus-feature ranking
 │   ├── gif/             screen recordings of the running app
-│   └── img/             screenshots
+│   └── img/             screenshots — desktop, tablet and phone
 ├── LICENSE
 └── README.md
 ```
@@ -298,6 +463,8 @@ Inside `index.html`, the code is organised in labelled sections, in load order:
 
 ## 5. Setup instructions
 
+> Full step-by-step deployment, including Firebase and the email extension, is in **[DEPLOY.md](DEPLOY.md)**. This section is the short version.
+
 ### Run it locally
 
 ```bash
@@ -317,69 +484,17 @@ npx vercel --prod
 
 Accept the defaults. Vercel serves `index.html` and turns `api/assistant.js` into the assistant's endpoint automatically.
 
-<details>
-<summary><b>Optional — turn on the Groq assistant</b></summary>
+### Then, optionally
 
-<br>
+| Step | What it adds | Where |
+|---|---|---|
+| Add `GROQ_API_KEY` in Vercel | Conversational answers in the Ask button instead of built-in ones | [DEPLOY.md § Phase 3](DEPLOY.md#phase-3--groq-the-ask-button) |
+| Connect Firebase | Shared realtime data across every device, instead of per-browser demo data | [DEPLOY.md § Phase 4](DEPLOY.md#phase-4--firebase-the-real-backend) |
+| Install Trigger Email | Real confirmation emails from your own no-reply address | [DEPLOY.md § Phase 5](DEPLOY.md#phase-5--confirmation-emails-optional) |
 
-1. Get a key from [console.groq.com](https://console.groq.com) (it starts with `gsk_`)
-2. In Vercel → your project → **Settings → Environment Variables**, add:
-
-   | Name | Value |
-   |---|---|
-   | `GROQ_API_KEY` | your key |
-   | `GROQ_MODEL` | *(optional)* defaults to `openai/gpt-oss-120b` |
-
-3. Redeploy with `npx vercel --prod`
-4. Sign in as organizer → **Site settings → AI assistant → Check**. It should say *Connected to Groq*
-
-> The key lives only in Vercel's environment. It is never in `index.html`, never in this repo, and never sent to the browser. Without it the assistant still answers from built-in logic.
-
-</details>
-
-<details>
-<summary><b>Optional — switch to Firebase for shared live data</b></summary>
-
-<br>
-
-Demo mode keeps data in each visitor's own browser. Firebase makes it shared and realtime across every device.
-
-1. Create a Firebase project. Enable **Cloud Firestore** and **Authentication → Email/Password**
-2. Under Authentication, add your owner email and a password
-3. Under **Authentication → Settings → Authorized domains**, add your Vercel domain
-4. Open **Firestore → Rules**, paste the contents of [`firestore.rules`](firestore.rules), change `organizer@stub.demo` to your email, and publish
-5. In `index.html`, find `STUB_CONFIG` near the top of the script and fill in:
-
-   ```js
-   window.STUB_CONFIG = {
-     firebase: {
-       apiKey: "…", authDomain: "your-project.firebaseapp.com",
-       projectId: "your-project", storageBucket: "your-project.appspot.com",
-       messagingSenderId: "…", appId: "…"
-     },
-     adminEmails: ['you@example.com'],
-     …
-   };
-   ```
-
-6. Redeploy, sign in as organizer, then either follow the setup wizard or use **Backup and rebuild → Load demo data**
+> The Groq key lives only in Vercel's environment variables. It is never in `index.html`, never in this repo, and never sent to the browser. Without it the assistant still answers from built-in logic.
 
 If Firebase fails to start for any reason, the app falls back to demo mode instead of showing a blank page.
-
-</details>
-
-<details>
-<summary><b>Optional — confirmation emails from your own address</b></summary>
-
-<br>
-
-1. In the Firebase console install the **Trigger Email from Firestore** extension
-2. Set the collection to `mail`
-3. Enter the SMTP details for your no-reply address (for Gmail, an app password works)
-
-Stub writes each email into `mail`, the extension sends it, and the delivery status shows on the dashboard's **Emails** page. In demo mode the same emails are recorded there with a preview instead of being sent.
-
-</details>
 
 ---
 
@@ -399,7 +514,7 @@ Participants do **not** need an account — registration works as a guest. These
 |---|---|---|---|
 | **Owner** | `organizer@stub.demo` | `carnival2026` | Everything, including settings, team and data |
 | **Manager** | `manager@stub.demo` | `manage2026` | Events, participants, payments, promos, accounts, monitor, news, emails, check-in |
-| **Volunteer** | `volunteer@stub.demo` | `gate2026` | Gate check-in and a read-only participant list |
+| **Volunteer** | `volunteer@stub.demo` | `gate2026` | Gate check-in, ticket artwork and a read-only participant list |
 | **Participant** | `student@stub.demo` | `ticket2026` | A sample account with saved tickets |
 
 <details>
@@ -419,7 +534,7 @@ Participants do **not** need an account — registration works as a guest. These
 | Dashboard → **Payments** → *Match from statement* | Paste statement text, every matching TrxID verifies at once |
 | Dashboard → **Live monitor** | The funnel, the heatmap, and who did not finish their form |
 | Dashboard → **Backup and rebuild** → *Recreate a fest* | Next year's fest built from this year's, dates shifted |
-| Sign in as the **volunteer** account | Role limits in action |
+| Sign in as the **volunteer** account | Role limits in action — check-in and ticket artwork only |
 | Press the **বাং** button anywhere | The whole site in Bangla |
 
 </details>
@@ -440,13 +555,15 @@ Participants do **not** need an account — registration works as a guest. These
 | Browser APIs | `BarcodeDetector`, `MediaDevices` (camera), `Clipboard`, `Web Crypto`, `IntersectionObserver`, `MutationObserver` | — |
 | [Vercel](https://vercel.com) | Hosting and the serverless function | — |
 
+Every asset in this repository is either original work, or carries one of the permissive licenses above.
+
 ---
 
 ## 9. AI tools used
 
-**Claude (Anthropic)** was used throughout development to plan the architecture, write the code, design the interface, generate the sample data, write this README, and run automated browser tests with Playwright that walk through registration, promo codes, waitlists, team invites, payments, cancellation, organizer actions and check-in — on desktop and mobile, in both themes and both languages.
+**Claude (Anthropic)** was used throughout development to plan the architecture, write the code, design the interface, generate the sample data, write this README, and run automated browser tests with Playwright that walk through registration, promo codes, waitlists, team invites, payments, cancellation, organizer actions and check-in — on desktop, tablet and mobile, in both themes and both languages.
 
-**Groq** (`openai/gpt-oss-120b`) runs *inside the product* as the help desk assistant described above. It is the only AI that runs at runtime, it only ever sees the public event data the page sends it, and the site works fully without it.
+**Groq** (`openai/gpt-oss-120b`) runs *inside the product* as the help desk assistant described in [Tier 01](#-tier-01--signature--the-five-a-google-form-can-never-do). It is the only AI that runs at runtime, it only ever sees the public event data the page sends it, and the site works fully without it.
 
 Every participant name, school, team name and transaction ID in the demo data is fictional and generated.
 
@@ -462,7 +579,7 @@ Every participant name, school, team name and transaction ID in the demo data is
 
 <table>
 <tr>
-<td width="50%"><img src="docs/img/01-home.jpg" alt="Homepage"><br><sub align="center"><b>Homepage</b> — countdown, fanned tickets closing soonest</sub></td>
+<td width="50%"><img src="docs/img/01-home.jpg" alt="Homepage"><br><sub><b>Homepage</b> — countdown, fanned tickets closing soonest</sub></td>
 <td width="50%"><img src="docs/img/05-event.jpg" alt="Event page"><br><sub><b>Event page</b> — rules, prizes, seat meter, live countdown</sub></td>
 </tr>
 <tr>
@@ -490,13 +607,29 @@ Every participant name, school, team name and transaction ID in the demo data is
 <td width="50%"><img src="docs/img/17-checkin.jpg" alt="Check-in"><br><sub><b>Check-in</b> — camera scan or typed code</sub></td>
 <td width="50%"><img src="docs/img/19-promos.jpg" alt="Promo codes"><br><sub><b>Promo codes</b> — percent or taka, limits, expiry</sub></td>
 </tr>
+<tr>
+<td width="50%"><img src="docs/img/24-ticket-design.jpg" alt="Ticket design"><br><sub><b>Ticket design</b> — a picture per event, volunteers included</sub></td>
+<td width="50%"><img src="docs/img/22-badges.jpg" alt="Printable ID badges"><br><sub><b>ID badges</b> — printed before the gate opens</sub></td>
+</tr>
 </table>
+
+### On a tablet
+
+<img src="docs/img/tablet.jpg" alt="Stub on a tablet: portrait homepage, portrait participants table, landscape live monitor" width="100%">
+
+<sub>Portrait homepage · Portrait participants, rows stacked into cards · Landscape live monitor</sub>
+
+<br><br>
 
 ### On a phone
 
 <img src="docs/img/mobile.jpg" alt="Stub on a phone: homepage, event page, Bangla homepage, organizer dashboard" width="100%">
 
 <sub>Homepage · Event page · বাংলা · Organizer dashboard — the sidebar becomes a tab strip</sub>
+
+<br><br>
+
+**Responsiveness was measured, not assumed.** 18 routes × 4 tablet sizes × 2 languages = **144 combinations, 0 overflow, 0 clipped containers**, plus phone and desktop passes. Details in [SCORECARD.md](SCORECARD.md#responsiveness-proof).
 
 </div>
 
@@ -546,6 +679,6 @@ Independent University, Bangladesh
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-tahsanmasum-6A5848?style=flat-square)](https://linkedin.com/in/tahsanmasum)
 
 <br>
-<sub>Built for the 9th DRMC International Tech Carnival 2026</sub>
+<sub>Built for the 9th DRMC International Tech Carnival 2026 · <a href="SCORECARD.md">Judge's scorecard</a> · <a href="DEPLOY.md">Deployment guide</a></sub>
 
 </div>
