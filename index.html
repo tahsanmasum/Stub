@@ -999,7 +999,7 @@ service cloud.firestore {
   match /databases/{database}/documents {
     function signedIn() { return request.auth != null; }
     function myEmail() { return signedIn() ? request.auth.token.email : ''; }
-    function bootstrap() { return myEmail() in ['tahsaniamon@gmail.com']; }
+    function bootstrap() { return myEmail() in ['tahsanmasum2019@gmail.com']; }
     function siteDoc() { return /databases/$(database)/documents/settings/site; }
     function isOrganizer() { return signedIn() && (bootstrap() || (exists(siteDoc()) && myEmail() in get(siteDoc()).data.adminEmails)); }
     function isOwner() { return signedIn() && (bootstrap() || (exists(siteDoc()) && myEmail() in get(siteDoc()).data.ownerEmails)); }
@@ -1127,7 +1127,7 @@ window.STUB_CONFIG = {
 
   // First owner account(s). Must also exist as users in Firebase Authentication when Firebase is on.
   // After the first sign-in, add more organizers from Dashboard > Team.
-  adminEmails: ['tahsaniamon@gmail.com'],
+  adminEmails: ['tahsanmasum2019@gmail.com'],
 
   // Shown on the organizer sign-in page so judges can get in (demo mode passwords).
   demoAccounts: [
