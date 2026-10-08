@@ -999,7 +999,7 @@ service cloud.firestore {
   match /databases/{database}/documents {
     function signedIn() { return request.auth != null; }
     function myEmail() { return signedIn() ? request.auth.token.email : ''; }
-    function bootstrap() { return myEmail() in ['organizer@stub.demo']; }
+    function bootstrap() { return myEmail() in ['tahsaniamon@gmail.com']; }
     function siteDoc() { return /databases/$(database)/documents/settings/site; }
     function isOrganizer() { return signedIn() && (bootstrap() || (exists(siteDoc()) && myEmail() in get(siteDoc()).data.adminEmails)); }
     function isOwner() { return signedIn() && (bootstrap() || (exists(siteDoc()) && myEmail() in get(siteDoc()).data.ownerEmails)); }
@@ -1113,22 +1113,21 @@ service cloud.firestore {
    Paste the config object from Firebase console > Project settings > Your apps > Web app.
    ============================================================ */
 window.STUB_CONFIG = {
-  firebase: null,
-  // firebase: {
-  //   apiKey: "...",
-  //   authDomain: "your-project.firebaseapp.com",
-  //   projectId: "your-project",
-  //   storageBucket: "your-project.appspot.com",
-  //   messagingSenderId: "...",
-  //   appId: "..."
-  // },
+  firebase: {
+    apiKey: "AIzaSyBk9qs7701Ng983Cwmps3H4tBdSo5sbYvA",
+    authDomain: "stub-1b840.firebaseapp.com",
+    projectId: "stub-1b840",
+    storageBucket: "stub-1b840.firebasestorage.app",
+    messagingSenderId: "361787859549",
+    appId: "1:361787859549:web:2f1bb7a5caf472325f23b4"
+  },
 
   // AI assistant: the serverless function that talks to Groq (see api/assistant.js). Leave as is on Vercel.
   assistantEndpoint: 'api/assistant',
 
   // First owner account(s). Must also exist as users in Firebase Authentication when Firebase is on.
   // After the first sign-in, add more organizers from Dashboard > Team.
-  adminEmails: ['organizer@stub.demo'],
+  adminEmails: ['tahsaniamon@gmail.com'],
 
   // Shown on the organizer sign-in page so judges can get in (demo mode passwords).
   demoAccounts: [
