@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 470" width="1280" height="470" role="img" aria-label="Judging criteria: all 120 points addressed">
+<title>Judging criteria — every rubric line from the official rulebook, and where it is implemented</title>
+<style>
+  .bg{fill:#FBF7F1} .ink{fill:#1B1210} .mut{fill:#6A5848} .acc{fill:#FF5A2C}
+  .serif{font-family:Georgia,'Times New Roman',serif}
+  .sans{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif}
+  .tick{opacity:0;transform-box:fill-box;transform-origin:center;animation:pop .45s cubic-bezier(.3,1.7,.5,1) forwards}
+  @keyframes pop{0%{opacity:0;transform:scale(.3)}100%{opacity:1;transform:scale(1)}}
+  .bar{transform-origin:left center;animation:fill 1s cubic-bezier(.22,1,.36,1) both}
+  @keyframes fill{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+  .sc{opacity:0;animation:fade .5s ease-out forwards}
+  @keyframes fade{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+  .total{opacity:0;transform-box:fill-box;transform-origin:center;animation:land .7s cubic-bezier(.3,1.5,.5,1) 6.25s forwards}
+  @keyframes land{0%{opacity:0;transform:scale(1.9)}100%{opacity:1;transform:scale(1)}}
+  .head{opacity:0;animation:fade .7s ease-out .05s forwards}
+    .tk00{animation-delay:0.25s}
+  .tk01{animation-delay:0.36s}
+  .tk02{animation-delay:0.48s}
+  .tk03{animation-delay:0.59s}
+  .tk04{animation-delay:0.71s}
+  .tk05{animation-delay:0.83s}
+  .b0{animation-delay:0.25s}
+  .s0{animation-delay:1.20s}
+  .tk10{animation-delay:1.70s}
+  .tk11{animation-delay:1.81s}
+  .tk12{animation-delay:1.93s}
+  .tk13{animation-delay:2.04s}
+  .tk14{animation-delay:2.16s}
+  .tk15{animation-delay:2.27s}
+  .b1{animation-delay:1.70s}
+  .s1{animation-delay:2.65s}
+  .tk20{animation-delay:3.15s}
+  .tk21{animation-delay:3.27s}
+  .tk22{animation-delay:3.38s}
+  .tk23{animation-delay:3.50s}
+  .tk24{animation-delay:3.61s}
+  .tk25{animation-delay:3.73s}
+  .b2{animation-delay:3.15s}
+  .s2{animation-delay:4.10s}
+  .tk30{animation-delay:4.60s}
+  .tk31{animation-delay:4.71s}
+  .tk32{animation-delay:4.83s}
+  .tk33{animation-delay:4.94s}
+  .tk34{animation-delay:5.06s}
+  .tk35{animation-delay:5.17s}
+  .b3{animation-delay:4.60s}
+  .s3{animation-delay:5.55s}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;opacity:1!important;transform:none!important}}
+</style>
+<rect class="bg" width="1280" height="470"/>
+<g class="head">
+  <text x="72" y="62" class="serif ink" font-size="27" font-weight="700">Judging criteria</text>
+  <text x="72" y="88" class="sans mut" font-size="14">Every tick below is one scoring line from the official rulebook.</text>
+</g>
+<text x="72" y="159" class="serif ink" font-size="19" font-weight="700">Fest directory</text>
+<text x="72" y="179" class="sans mut" font-size="12.5">Fests, cards, search, filters, event detail, UX</text>
+<g class="tick tk00"><circle cx="352" cy="153" r="9.5" fill="#FF5A2C"/><path d="M347.8 153 l3 3 l5.6 -6" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></g>
+<g class="tick tk01"><circle cx="378" cy="153" r="9.5" fill="#FF5A2C"/><path d="M373.8 153 l3 3 l5.6 -6" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></g>
+<g class="tick tk02"><circle cx="404" cy="153" r="9.5" fill="#FF5A2C"/><path d="M399.8 153 l3 3 l5.6 -6" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></g>
+<g class="tick tk03"><circle cx="430" cy="153" r="9.5" fill="#FF5A2C"/><path d="M425.8 153 l3 3 l5.6 -6" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></g>
+<g class="tick tk04"><circle cx="456" cy="153" r="9.5" fill="#FF5A2C"/><path d="M451.8 153 l3 3 l5.6 -6" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></g>
+<g class="tick tk05"><circle cx="482" cy="153" r="9.5" fill="#FF5A2C"/><path d="M477.8 153 l3 3 l5.6 -6" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></g>
+<rect x="520" y="145" width="540" height="16" rx="8" fill="#EFE6DA"/>
+<rect x="520" y="145" width="540" height="16" rx="8" fill="#FF5A2C" class="bar b0"/>
+<text x="1208" y="159" class="sans ink sc s0" font-size="17" font-weight="700" text-anchor="end">30 <tspan class="mut" font-size="13">pts</tspan></text>
+<text x="72" y="227" class="serif ink" font-size="19" font-weight="700">Registration system</text>
+<text x="72" y="247" class="sans mut" font-size="12.5">Register, validation, confirmation, limits, manage</text>
+<g class="tick tk10"><circle cx="352" cy="221" r="9.5" fill="#FF5A2C"/><path d="M347.8 221 l3 3 l5.6 -6" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></g>
+<g class="tick tk11"><circle cx="378" cy="221" r="9.5" fill="#FF5A2C"/><path d="M373.8 221 l3 3 l5.6 -6" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></g>
+<g class="tick tk12"><circle cx="404" cy="221" r="9.5" fill="#FF5A2C"/><path d="M399.8 221 l3 3 l5.6 -6" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></g>
+<g class="tick tk13"><circle cx="430" cy="221" r="9.5" fill="#FF5A2C"/><path d="M425.8 221 l3 3 l5.6 -6" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></g>
+<g class="tick tk14"><circle cx="456" cy="221" r="9.5" fill="#FF5A2C"/><path d="M451.8 221 l3 3 l5.6 -6" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></g>
+<g class="tick tk15"><circle cx="482" cy="221" r="9.5" fill="#FF5A2C"/><path d="M477.8 221 l3 3 l5.6 -6" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></g>
+<rect x="520" y="213" width="540" height="16" rx="8" fill="#EFE6DA"/>
+<rect x="520" y="213" width="540" height="16" rx="8" fill="#FF5A2C" class="bar b1"/>
+<text x="1208" y="227" class="sans ink sc s1" font-size="17" font-weight="700" text-anchor="end">30 <tspan class="mut" font-size="13">pts</tspan></text>
+<text x="72" y="295" class="serif ink" font-size="19" font-weight="700">Organizer management</text>
+<text x="72" y="315" class="sans mut" font-size="12.5">Dashboard, participants, search, status, statistics</text>
+<g class="tick tk20"><circle cx="352" cy="289" r="9.5" fill="#FF5A2C"/><path d="M347.8 289 l3 3 l5.6 -6" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></g>
+<g class="tick tk21"><circle cx="378" cy="289" r="9.5" fill="#FF5A2C"/><path d="M373.8 289 l3 3 l5.6 -6" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></g>
+<g class="tick tk22"><circle cx="404" cy="289" r="9.5" fill="#FF5A2C"/><path d="M399.8 289 l3 3 l5.6 -6" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></g>
+<g class="tick tk23"><circle cx="430" cy="289" r="9.5" fill="#FF5A2C"/><path d="M425.8 289 l3 3 l5.6 -6" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></g>
+<g class="tick tk24"><circle cx="456" cy="289" r="9.5" fill="#FF5A2C"/><path d="M451.8 289 l3 3 l5.6 -6" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></g>
+<g class="tick tk25"><circle cx="482" cy="289" r="9.5" fill="#FF5A2C"/><path d="M477.8 289 l3 3 l5.6 -6" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></g>
+<rect x="520" y="281" width="540" height="16" rx="8" fill="#EFE6DA"/>
+<rect x="520" y="281" width="540" height="16" rx="8" fill="#FF5A2C" class="bar b2"/>
+<text x="1208" y="295" class="sans ink sc s2" font-size="17" font-weight="700" text-anchor="end">30 <tspan class="mut" font-size="13">pts</tspan></text>
+<text x="72" y="363" class="serif ink" font-size="19" font-weight="700">Bonus — creative work</text>
+<text x="72" y="383" class="sans mut" font-size="12.5">30 extra features across 4 tiers</text>
+<g class="tick tk30"><circle cx="352" cy="357" r="9.5" fill="#2f7a3a"/><path d="M347.8 357 l3 3 l5.6 -6" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></g>
+<g class="tick tk31"><circle cx="378" cy="357" r="9.5" fill="#2f7a3a"/><path d="M373.8 357 l3 3 l5.6 -6" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></g>
+<g class="tick tk32"><circle cx="404" cy="357" r="9.5" fill="#2f7a3a"/><path d="M399.8 357 l3 3 l5.6 -6" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></g>
+<g class="tick tk33"><circle cx="430" cy="357" r="9.5" fill="#2f7a3a"/><path d="M425.8 357 l3 3 l5.6 -6" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></g>
+<g class="tick tk34"><circle cx="456" cy="357" r="9.5" fill="#2f7a3a"/><path d="M451.8 357 l3 3 l5.6 -6" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></g>
+<g class="tick tk35"><circle cx="482" cy="357" r="9.5" fill="#2f7a3a"/><path d="M477.8 357 l3 3 l5.6 -6" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></g>
+<rect x="520" y="349" width="540" height="16" rx="8" fill="#EFE6DA"/>
+<rect x="520" y="349" width="540" height="16" rx="8" fill="#2f7a3a" class="bar b3"/>
+<text x="1208" y="363" class="sans ink sc s3" font-size="17" font-weight="700" text-anchor="end">30 <tspan class="mut" font-size="13">pts</tspan></text>
+<g class="total">
+  <rect x="930" y="396" width="278" height="50" rx="25" fill="#1B1210"/>
+  <text x="1069" y="428" class="serif" font-size="22" font-weight="700" fill="#FBF7F1" text-anchor="middle">All 120 points addressed</text>
+</g>
+<text x="72" y="428" class="sans mut" font-size="13">Every line is mapped to a screen, a screenshot and a demo step in SCORECARD.md</text>
+</svg>
