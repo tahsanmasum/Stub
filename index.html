@@ -1218,7 +1218,7 @@ window.STUB_CONFIG = {
           'Seed the app with enough sample data to test every feature.',
           'List every AI tool you used in the README. Using AI is allowed; hiding it is not.'
         ],
-        prizes: [['৳15,000', 'Champion'], ['৳8,000', 'First runner-up'], ['৳5,000', 'Second runner-up']],
+        prizes: [{amount: '৳15,000', label: 'Champion'}, {amount: '৳8,000', label: 'First runner-up'}, {amount: '৳5,000', label: 'Second runner-up'}],
         startsAt: at(8, 10), endsAt: at(8, 14), deadline: at(3, 23, 59), opensAt: at(-20),
         venue: 'ICT Building, Seminar Room', capacity: 60, waitlist: 10, fee: 300,
         teamMin: 1, teamMax: 3, autoConfirm: true, regOpen: true,
@@ -1239,7 +1239,7 @@ window.STUB_CONFIG = {
           'Printed notes are allowed, up to 25 pages.',
           'Reporting 15 minutes before the start is mandatory.'
         ],
-        prizes: [['৳10,000', 'Champion'], ['৳6,000', 'First runner-up'], ['৳3,000', 'Best newcomer']],
+        prizes: [{amount: '৳10,000', label: 'Champion'}, {amount: '৳6,000', label: 'First runner-up'}, {amount: '৳3,000', label: 'Best newcomer'}],
         startsAt: at(6, 10), endsAt: at(6, 13), deadline: at(1, 23, 59), opensAt: at(-20),
         venue: 'ICT Lab 1 and 2', capacity: 150, waitlist: 0, fee: 200, allowCash: true,
         teamMin: 1, teamMax: 1, autoConfirm: true, regOpen: true,
@@ -1257,7 +1257,7 @@ window.STUB_CONFIG = {
           'No pre-built commercial kits in the soccer track.',
           'Batteries must be under 24 V. No exposed lithium cells.'
         ],
-        prizes: [['৳12,000', 'Per track winner'], ['৳4,000', 'Best design'], ['Crests', 'All finalists']],
+        prizes: [{amount: '৳12,000', label: 'Per track winner'}, {amount: '৳4,000', label: 'Best design'}, {amount: 'Crests', label: 'All finalists'}],
         startsAt: at(7, 9, 30), endsAt: at(7, 15), deadline: at(4, 23, 59), opensAt: at(-20),
         venue: 'Main Auditorium', capacity: 16, waitlist: 6, fee: 500,
         teamMin: 2, teamMax: 4, autoConfirm: false, regOpen: true,
@@ -1277,7 +1277,7 @@ window.STUB_CONFIG = {
           'All accounts must be level 20 or above.',
           'Bring your own peripherals. Club PCs are provided.'
         ],
-        prizes: [['৳20,000', 'Champion'], ['৳8,000', 'Runner-up'], ['Gear', 'Match MVPs']],
+        prizes: [{amount: '৳20,000', label: 'Champion'}, {amount: '৳8,000', label: 'Runner-up'}, {amount: 'Gear', label: 'Match MVPs'}],
         startsAt: at(9, 10), endsAt: at(9, 18), deadline: at(-1, 23, 59), opensAt: at(-25),
         venue: 'Main Auditorium', capacity: 32, waitlist: 0, fee: 750,
         teamMin: 5, teamMax: 5, autoConfirm: true, regOpen: true,
@@ -1294,7 +1294,7 @@ window.STUB_CONFIG = {
           'You get one table and one power socket. Tell us if you need more.',
           'Stay with your project between 11 am and 4 pm.'
         ],
-        prizes: [['Crest', 'Crowd favourite'], ['Certificate', 'Every exhibitor']],
+        prizes: [{amount: 'Crest', label: 'Crowd favourite'}, {amount: 'Certificate', label: 'Every exhibitor'}],
         startsAt: at(6, 11), endsAt: at(6, 16), deadline: at(4, 18), opensAt: at(-20),
         venue: 'ICT Building, Ground Floor Lobby', capacity: 40, waitlist: 0, fee: 0,
         teamMin: 1, teamMax: 4, autoConfirm: false, regOpen: true,
@@ -1307,7 +1307,7 @@ window.STUB_CONFIG = {
         summary: 'Twenty hours to build something useful for your school. Overnight, food included.',
         description: 'Problem statements come from teachers and the school office: attendance, canteen queues, lost and found. Pick one, build a prototype by morning, pitch it before lunch.\n\nWe review applications because seats are limited to 30 teams.',
         rules: ['Teams of 3 or 4.', 'All code must be written during the event.', 'A parent consent form is required for participants under 18.'],
-        prizes: [['৳25,000', 'Champion'], ['Internship interviews', 'Top three teams']],
+        prizes: [{amount: '৳25,000', label: 'Champion'}, {amount: 'Internship interviews', label: 'Top three teams'}],
         startsAt: at(64, 9), endsAt: at(65, 12), deadline: at(55, 23, 59), opensAt: at(-10),
         venue: 'Library Annex', capacity: 30, waitlist: 10, fee: 600,
         teamMin: 3, teamMax: 4, autoConfirm: false, regOpen: true,
@@ -1333,7 +1333,7 @@ window.STUB_CONFIG = {
         summary: 'Pairs, buzzers, and questions about everything from Ada Lovelace to Bluetooth naming.',
         description: 'Written prelims, then six pairs go to the stage round with buzzers. Questions cover computing history, current tech news and a few pictures you will need to squint at.',
         rules: ['Teams of exactly 2.', 'No phones during the prelims.'],
-        prizes: [['৳5,000', 'Winning pair'], ['Books', 'Runners-up']],
+        prizes: [{amount: '৳5,000', label: 'Winning pair'}, {amount: 'Books', label: 'Runners-up'}],
         startsAt: at(65, 14), endsAt: at(65, 16), deadline: at(62, 23, 59), opensAt: at(-10),
         venue: 'Library Annex', capacity: 50, waitlist: 0, fee: 100,
         teamMin: 2, teamMax: 2, autoConfirm: true, regOpen: true,
@@ -1346,7 +1346,7 @@ window.STUB_CONFIG = {
         summary: 'Your first contest. Easy problems, friendly mentors, and a scoreboard you are allowed to ignore.',
         description: 'Five problems, two hours, and club seniors walking around to help when you get stuck. Python and C are both fine.',
         rules: ['Open to students who joined this year.', 'Individual participation.'],
-        prizes: [['Crest', 'Top five'], ['Certificate', 'Everyone who solves one problem']],
+        prizes: [{amount: 'Crest', label: 'Top five'}, {amount: 'Certificate', label: 'Everyone who solves one problem'}],
         startsAt: at(128, 10), endsAt: at(128, 12), deadline: at(122, 23, 59), opensAt: at(95, 10),
         venue: 'ICT Lab 1', capacity: 100, waitlist: 20, fee: 0,
         teamMin: 1, teamMax: 1, autoConfirm: true, regOpen: true,
@@ -1370,7 +1370,7 @@ window.STUB_CONFIG = {
         summary: 'Six hours, ten problems, teams of up to three.',
         description: 'ICPC-style team contest. Results are final.',
         rules: ['Teams of 1 to 3.'],
-        prizes: [['৳12,000', 'Champion']],
+        prizes: [{amount: '৳12,000', label: 'Champion'}],
         startsAt: at(-150, 10), endsAt: at(-150, 16), deadline: at(-156, 23, 59), opensAt: at(-180),
         venue: 'ICT Lab 1 and 2', capacity: 80, waitlist: 0, fee: 200,
         teamMin: 1, teamMax: 3, autoConfirm: true, regOpen: true,
@@ -1582,13 +1582,13 @@ window.STUB_CONFIG = {
       banner: { on: true, text: 'Programming Contest registration closes tomorrow night.', textBn: 'প্রোগ্রামিং কনটেস্টের নিবন্ধন আগামীকাল রাতে বন্ধ হবে।', link: '#/events/programming-contest' },
       sections: { countdown: true, leaderboard: true, sponsors: true, faq: true, visits: true },
       faq: [
-        ['Do I need an account to register?', 'No. You can register as a guest and your ticket is saved in your browser. An account lets you see your tickets on any device and fills in the form for you next time.', 'নিবন্ধনের জন্য কি অ্যাকাউন্ট লাগবে?', 'না। অতিথি হিসেবেই নিবন্ধন করা যায়, টিকিট আপনার ব্রাউজারে সংরক্ষিত থাকে। অ্যাকাউন্ট থাকলে যেকোনো ডিভাইসে টিকিট দেখা যায় এবং পরের বার ফর্ম আপনাআপনি পূরণ হয়।'],
-        ['How do I pay the entry fee?', 'Send the fee by bKash, Nagad or Rocket to the number shown on the form, then enter your transaction ID and the number you paid from. We check every payment against our statement, usually within a few hours.', 'এন্ট্রি ফি কীভাবে দেব?', 'ফর্মে দেখানো নম্বরে বিকাশ, নগদ বা রকেটে ফি পাঠান, তারপর ট্রানজেকশন আইডি আর যে নম্বর থেকে পাঠিয়েছেন সেটি লিখুন। আমরা প্রতিটি পেমেন্ট স্টেটমেন্টের সাথে মিলিয়ে দেখি, সাধারণত কয়েক ঘণ্টার মধ্যে।'],
-        ['I paid but my ticket still says waiting.', 'That means we have not matched your transaction yet. If it has been more than a day, reply to the club email with your ticket code.', 'টাকা পাঠিয়েছি, কিন্তু টিকিটে এখনো অপেক্ষমাণ দেখাচ্ছে।', 'এর মানে আমরা এখনো আপনার ট্রানজেকশন মেলাইনি। এক দিনের বেশি হয়ে গেলে টিকিট কোডসহ ক্লাবের ইমেইলে জানান।'],
-        ['Can I change my team members after registering?', 'Yes. Open your ticket and choose Edit details, or share your team invite link. Changes are allowed until the registration deadline.', 'নিবন্ধনের পর কি দলের সদস্য বদলানো যাবে?', 'হ্যাঁ। টিকিট খুলে "তথ্য সম্পাদনা" চাপুন, অথবা দলের আমন্ত্রণ লিংক শেয়ার করুন। নিবন্ধনের শেষ সময় পর্যন্ত পরিবর্তন করা যায়।'],
-        ['What should I bring on the day?', 'Your ticket (the QR code on your phone is enough) and your student ID card. Some events list extra items in their rules.', 'ইভেন্টের দিন কী নিয়ে আসব?', 'আপনার টিকিট (ফোনের QR কোডই যথেষ্ট) এবং স্টুডেন্ট আইডি কার্ড। কিছু ইভেন্টের নিয়মে বাড়তি জিনিসের কথা লেখা আছে।']
+        {q: 'Do I need an account to register?', a: 'No. You can register as a guest and your ticket is saved in your browser. An account lets you see your tickets on any device and fills in the form for you next time.', qb: 'নিবন্ধনের জন্য কি অ্যাকাউন্ট লাগবে?', ab: 'না। অতিথি হিসেবেই নিবন্ধন করা যায়, টিকিট আপনার ব্রাউজারে সংরক্ষিত থাকে। অ্যাকাউন্ট থাকলে যেকোনো ডিভাইসে টিকিট দেখা যায় এবং পরের বার ফর্ম আপনাআপনি পূরণ হয়।'},
+        {q: 'How do I pay the entry fee?', a: 'Send the fee by bKash, Nagad or Rocket to the number shown on the form, then enter your transaction ID and the number you paid from. We check every payment against our statement, usually within a few hours.', qb: 'এন্ট্রি ফি কীভাবে দেব?', ab: 'ফর্মে দেখানো নম্বরে বিকাশ, নগদ বা রকেটে ফি পাঠান, তারপর ট্রানজেকশন আইডি আর যে নম্বর থেকে পাঠিয়েছেন সেটি লিখুন। আমরা প্রতিটি পেমেন্ট স্টেটমেন্টের সাথে মিলিয়ে দেখি, সাধারণত কয়েক ঘণ্টার মধ্যে।'},
+        {q: 'I paid but my ticket still says waiting.', a: 'That means we have not matched your transaction yet. If it has been more than a day, reply to the club email with your ticket code.', qb: 'টাকা পাঠিয়েছি, কিন্তু টিকিটে এখনো অপেক্ষমাণ দেখাচ্ছে।', ab: 'এর মানে আমরা এখনো আপনার ট্রানজেকশন মেলাইনি। এক দিনের বেশি হয়ে গেলে টিকিট কোডসহ ক্লাবের ইমেইলে জানান।'},
+        {q: 'Can I change my team members after registering?', a: 'Yes. Open your ticket and choose Edit details, or share your team invite link. Changes are allowed until the registration deadline.', qb: 'নিবন্ধনের পর কি দলের সদস্য বদলানো যাবে?', ab: 'হ্যাঁ। টিকিট খুলে "তথ্য সম্পাদনা" চাপুন, অথবা দলের আমন্ত্রণ লিংক শেয়ার করুন। নিবন্ধনের শেষ সময় পর্যন্ত পরিবর্তন করা যায়।'},
+        {q: 'What should I bring on the day?', a: 'Your ticket (the QR code on your phone is enough) and your student ID card. Some events list extra items in their rules.', qb: 'ইভেন্টের দিন কী নিয়ে আসব?', ab: 'আপনার টিকিট (ফোনের QR কোডই যথেষ্ট) এবং স্টুডেন্ট আইডি কার্ড। কিছু ইভেন্টের নিয়মে বাড়তি জিনিসের কথা লেখা আছে।'}
       ],
-      sponsors: [['Grameenphone', 'Title sponsor'], ['bKash', 'Payment partner'], ['Walton', 'Robotics arena partner'], ['Daraz', 'Gaming partner']],
+      sponsors: [{name: 'Grameenphone', role: 'Title sponsor'}, {name: 'bKash', role: 'Payment partner'}, {name: 'Walton', role: 'Robotics arena partner'}, {name: 'Daraz', role: 'Gaming partner'}],
       policy: { requireAccount: false, browserLock: true, saveDrafts: true },
       email: { on: true, onConfirm: true, onReceive: false, onPayReject: true, onPromote: true, senderName: 'DRMC IT Club', replyTo: '' },
       assistant: { on: true, name: 'Help desk', knowledge: 'Parking is not available on campus; use public transport. Lunch is provided for participants on contest days. Lost and found is at the ICT building reception. Prize money is paid by bank transfer within two weeks of the fest.' },
@@ -3132,9 +3132,9 @@ window.STUB_CONFIG = {
         evs.map(([e, c], i) => '<a class="rank-row" href="#/events/' + e.id + '" style="text-decoration:none;--accent:' + Store.inkOf(e.festId) + '"><span class="pos">' + (i + 1) + '</span><span class="nm">' + esc(e.title) + '</span><span class="ct">' + c + '</span><span class="bar"><i style="--v:' + (c / emax) * 100 + '%"></i></span></a>').join('') + '</div></div></div></div></section>';
     }
     if (sec.sponsors !== false && (S.sponsors || []).length) out += '<section class="sec"><div class="wrap"><div class="sec-head"><div><h2 class="h2">Our partners</h2><p class="muted">The people who make the prizes possible.</p></div></div><div class="sponsors">' +
-      S.sponsors.map(([n, t]) => '<div class="sponsor"><b>' + esc(n) + '</b><span>' + esc(t) + '</span></div>').join('') + '</div></div></section>';
+      S.sponsors.map((s) => '<div class="sponsor"><b>' + esc(s.name || s[0]) + '</b><span>' + esc(s.role || s[1]) + '</span></div>').join('') + '</div></div></section>';
     if (sec.faq !== false && (S.faq || []).length) out += '<section class="sec" id="faq"><div class="wrap"><div style="max-width:820px"><div class="sec-head"><div><h2 class="h2">Questions people ask</h2></div></div><div class="faq">' +
-      S.faq.map(([q, a, qb, ab]) => '<details><summary>' + esc(Store.loc(q, qb)) + '</summary><p>' + esc(Store.loc(a, ab)) + '</p></details>').join('') + '</div></div></div></section>';
+      S.faq.map((f) => '<details><summary>' + esc(Store.loc(f.q || f[0], f.qb || f[2])) + '</summary><p>' + esc(Store.loc(f.a || f[1], f.ab || f[3])) + '</p></details>').join('') + '</div></div></div></section>';
     return out;
   }
 
@@ -3199,7 +3199,7 @@ window.STUB_CONFIG = {
       (notes.length ? '<div class="ev-section"><h2 class="h3">From the organizers</h2>' + notes.map((n) => '<div class="notice"><p>' + esc(n.text) + '</p><time>' + T('Posted ', 'প্রকাশ: ') + Fmt.ago(n.createdAt) + '</time></div>').join('') + '</div>' : '') +
       '<div class="ev-section prose"><h2 class="h3">About</h2>' + paras(ev.description) + '</div>' +
       (ev.rules && ev.rules.length ? '<div class="ev-section prose"><h2 class="h3">Rules</h2><ul>' + ev.rules.map((r) => '<li>' + esc(r) + '</li>').join('') + '</ul></div>' : '') +
-      (ev.prizes && ev.prizes.length ? '<div class="ev-section"><h2 class="h3">Prizes</h2><div class="prizes">' + ev.prizes.map(([a, b]) => '<div class="prize"><b>' + esc(a) + '</b><span>' + esc(b) + '</span></div>').join('') + '</div></div>' : '');
+      (ev.prizes && ev.prizes.length ? '<div class="ev-section"><h2 class="h3">Prizes</h2><div class="prizes">' + ev.prizes.map((p) => '<div class="prize"><b>' + esc(p.amount || p[0]) + '</b><span>' + esc(p.label || p[1]) + '</span></div>').join('') + '</div></div>' : '');
 
     const html = '<div class="wrap page-event" style="--ink:' + ink + '"><div class="ev-wrap"><div>' + left + '</div>' +
       '<aside class="booth" id="booth" aria-label="Registration">' + boothTop(ev, st) + '<div class="booth-body">' + boothBody(ev, st) + '</div></aside></div>' +
@@ -3846,11 +3846,11 @@ window.STUB_CONFIG = {
           title: e.title, fest: f.title, category: e.category, starts: Fmt.when(e.startsAt), ends: Fmt.when(e.endsAt), venue: e.venue,
           fee: e.fee ? Fmt.taka(e.fee) + (e.teamMax > 1 ? ' per team' : '') + (e.allowCash ? ', cash at desk allowed' : '') : 'Free',
           team: Fmt.team(e), registerBy: Fmt.when(e.deadline), status: s.label, seatsLeft: s.left, waitlist: s.wl,
-          summary: e.summary, rules: (e.rules || []).slice(0, 5), prizes: (e.prizes || []).map((p) => p.join(' ')),
+          summary: e.summary, rules: (e.rules || []).slice(0, 5), prizes: (e.prizes || []).map((p) => (p.amount || p[0]) + ' ' + (p.label || p[1])),
           link: location.origin + location.pathname + '#/events/' + e.id
         };
       }),
-      faq: (S.faq || []).map(([q, a]) => ({ q, a })),
+      faq: (S.faq || []).map((f) => ({ q: f.q || f[0], a: f.a || f[1] })),
       news: Store.news().slice(0, 5).map((n) => n.title + ': ' + n.text),
       extra: (S.assistant || {}).knowledge || '',
       currentPage: m && Store.event(m[1]) ? 'The visitor is looking at ' + Store.event(m[1]).title : 'Homepage',
@@ -3908,8 +3908,8 @@ window.STUB_CONFIG = {
     if (has(q, /bring|carry|need|id card|নিয়ে|আনতে|আইডি/)) return T('Bring your ticket (the QR on your phone is enough) and your student ID card.', 'আপনার টিকিট (ফোনের QR কোডই যথেষ্ট) আর স্টুডেন্ট আইডি কার্ড নিয়ে আসুন।') + (ev && ev.rules && ev.rules.length ? ' ' + ev.rules.slice(0, 2).join(' ') : '');
     const qset = new Set(q.split(/\W+/).filter((w) => w.length > 3));
     let bestF = null, bs = 0;
-    (S.faq || []).forEach((f) => { const n = (f[0] + ' ' + (f[2] || '')).toLowerCase().split(/\W+/).filter((w) => qset.has(w)).length; if (n > bs) { bs = n; bestF = f; } });
-    if (bestF && bs >= 2) return Store.loc(bestF[1], bestF[3]);
+    (S.faq || []).forEach((f) => { const n = ((f.q || f[0]) + ' ' + (f.qb || f[2] || '')).toLowerCase().split(/\W+/).filter((w) => qset.has(w)).length; if (n > bs) { bs = n; bestF = f; } });
+    if (bestF && bs >= 2) return Store.loc(bestF.a || bestF[1], bestF.ab || bestF[3]);
     const kw = ((S.assistant || {}).knowledge || '').split(/(?<=\.)\s+/).find((sen) => sen.toLowerCase().split(/\W+/).filter((w) => qset.has(w)).length >= 1);
     if (kw) return kw;
     if (ev) return evLine(ev) + '. ' + Fmt.team(ev) + ', ' + Fmt.money(ev.fee) + '. ' + Store.state(ev).label + '.';
@@ -4355,7 +4355,7 @@ window.STUB_CONFIG = {
       field({ name: 'summary', label: 'Summary', value: ev.summary, req: true, hint: 'One or two sentences. Shown at the top of the event page.' }) +
       field({ name: 'description', label: 'Full description', type: 'textarea', value: ev.description }) +
       field({ name: 'rules', label: 'Rules', type: 'textarea', value: (ev.rules || []).join('\n'), hint: 'One rule per line.' }) +
-      field({ name: 'prizes', label: 'Prizes', type: 'textarea', value: (ev.prizes || []).map((p) => p.join(' | ')).join('\n'), hint: 'One per line, as amount | label. For example: ৳10,000 | Champion' }) +
+      field({ name: 'prizes', label: 'Prizes', type: 'textarea', value: (ev.prizes || []).map((p) => (p.amount || p[0]) + ' | ' + (p.label || p[1])).join('\n'), hint: 'One per line, as amount | label. For example: ৳10,000 | Champion' }) +
       '<div class="drawer-sec">When and where</div>' +
       '<div class="row2">' + field({ name: 'startsAt', label: 'Starts', type: 'datetime-local', value: toLocalInput(ev.startsAt), req: true }) + field({ name: 'endsAt', label: 'Ends', type: 'datetime-local', value: toLocalInput(ev.endsAt), req: true }) + '</div>' +
       field({ name: 'venue', label: 'Venue', value: ev.venue, req: true }) +
@@ -4407,7 +4407,7 @@ window.STUB_CONFIG = {
           const out = {
             ...ev, festId: g('festId'), title: g('title'), category: g('category'), summary: g('summary'), description: g('description'),
             rules: g('rules').split('\n').map((s) => s.trim()).filter(Boolean),
-            prizes: g('prizes').split('\n').map((l) => l.split('|').map((s) => s.trim())).filter((p) => p[0]).map((p) => [p[0], p[1] || '']),
+            prizes: g('prizes').split('\n').map((l) => l.split('|').map((s) => s.trim())).filter((p) => p[0]).map((p) => ({amount: p[0], label: p[1] || ''})),
             startsAt: t.s, endsAt: t.e, opensAt: t.o || null, deadline: t.dl, venue: g('venue'),
             capacity: num('capacity'), waitlist: num('waitlist'), fee: num('fee'), teamMin: num('teamMin'), teamMax: num('teamMax'),
             autoConfirm: form.elements.autoConfirm.checked, allowCash: form.elements.allowCash.checked, regOpen: form.elements.regOpen.checked, questions
@@ -4991,8 +4991,8 @@ window.STUB_CONFIG = {
         sw('mail_on', S.email.on, 'Send automatic emails', 'Master switch for every email below.') + sw('mail_confirm', S.email.onConfirm !== false, 'Registration confirmed', 'When an organizer confirms, a payment is verified on an auto-confirm event, or a free event confirms instantly.') +
         sw('mail_receive', S.email.onReceive, 'Registration received', 'Right after someone registers, before confirmation.') + sw('mail_reject', S.email.onPayReject !== false, 'Payment rejected', 'Includes your reason and a link to submit the right TrxID.') + sw('mail_promote', S.email.onPromote !== false, 'Off the waitlist', 'When a seat opens and someone is promoted.') +
         '<div class="row2" style="margin-top:12px">' + field({ name: 'mail_sender', label: 'Sender name', value: S.email.senderName || S.clubName || '' }) + field({ name: 'mail_reply', label: 'Reply-to (optional)', type: 'email', value: S.email.replyTo || '', hint: 'Leave empty for no-reply.' }) + '</div></section>' +
-      '<section class="set-card" id="s-faq"><h2>FAQ</h2><p>Shown at the bottom of the homepage and used by the assistant. The second pair of boxes is the বাংলা version.</p><div class="list-edit" data-list="faq">' + S.faq.map(([q, a, qb, ab]) => listRow(q, a, 'faq_q', 'faq_a', 'Question', 'Answer') + listRow(qb || '', ab || '', 'faq_qb', 'faq_ab', 'প্রশ্ন (বাংলা)', 'উত্তর (বাংলা)')).join('') + '</div><button type="button" class="btn btn-line btn-sm" data-add-row="faq">' + icon.plus + 'Add a question</button></section>' +
-      '<section class="set-card" id="s-spon"><h2>Partners</h2><p>Name and role, for example "bKash" and "Payment partner".</p><div class="list-edit" data-list="spon">' + S.sponsors.map(([n, t]) => listRow(n, t, 'sp_n', 'sp_t', 'Partner name', 'Role')).join('') + '</div><button type="button" class="btn btn-line btn-sm" data-add-row="spon">' + icon.plus + 'Add a partner</button></section>' +
+      '<section class="set-card" id="s-faq"><h2>FAQ</h2><p>Shown at the bottom of the homepage and used by the assistant. The second pair of boxes is the বাংলা version.</p><div class="list-edit" data-list="faq">' + S.faq.map((f) => listRow(f.q || f[0], f.a || f[1], 'faq_q', 'faq_a', 'Question', 'Answer') + listRow(f.qb || f[2] || '', f.ab || f[3] || '', 'faq_qb', 'faq_ab', 'প্রশ্ন (বাংলা)', 'উত্তর (বাংলা)')).join('') + '</div><button type="button" class="btn btn-line btn-sm" data-add-row="faq">' + icon.plus + 'Add a question</button></section>' +
+      '<section class="set-card" id="s-spon"><h2>Partners</h2><p>Name and role, for example "bKash" and "Payment partner".</p><div class="list-edit" data-list="spon">' + S.sponsors.map((s) => listRow(s.name || s[0], s.role || s[1], 'sp_n', 'sp_t', 'Partner name', 'Role')).join('') + '</div><button type="button" class="btn btn-line btn-sm" data-add-row="spon">' + icon.plus + 'Add a partner</button></section>' +
       '<section class="set-card" id="s-contact"><h2>Contact</h2><p>Shown in the footer.</p><div class="row2">' + field({ name: 'contactEmail', label: 'Email', type: 'email', value: S.contactEmail }) + field({ name: 'contactPhone', label: 'Phone', value: S.contactPhone }) + '</div>' + field({ name: 'address', label: 'Address', value: S.address }) +
         '<div class="row2">' + field({ name: 'so_facebook', label: 'Facebook page', value: S.socials.facebook, placeholder: 'https://facebook.com/...' }) + field({ name: 'so_instagram', label: 'Instagram', value: S.socials.instagram }) + field({ name: 'so_youtube', label: 'YouTube', value: S.socials.youtube }) + field({ name: 'so_linkedin', label: 'LinkedIn', value: S.socials.linkedin }) + '</div></section>' +
       '<div class="save-bar"><button type="button" class="btn btn-line btn-sm" data-discard>Discard changes</button><button type="submit" class="btn btn-ink btn-sm">Save settings</button></div></div></div></form>';
@@ -5031,15 +5031,15 @@ window.STUB_CONFIG = {
           const pms = $$('.pm-row', root).map((row) => ({ id: row.dataset.pmRow, type: row.querySelector('[name=pm_type]').value, number: row.querySelector('[name=pm_number]').value.trim(), accountType: row.querySelector('[name=pm_kind]').value, name: row.querySelector('[name=pm_name]').value.trim(), instructions: row.querySelector('[name=pm_note]').value.trim(), on: row.querySelector('[name=pm_on]').checked }));
           pms.forEach((m, i) => { const f = $$('.pm-row', root)[i].querySelector('[data-field="pm_number"]'); const bad = m.number.replace(/\D/g, '').length < 10; f.classList.toggle('err', bad); f.querySelector('.msg').textContent = bad ? 'Enter the full number.' : ''; if (bad) ok = false; });
           if (!ok) { const f = $('.field.err input', form); f && f.focus(); return; }
-          const pairs = (a, b) => { const A = $$('[name="' + a + '"]', root), B = $$('[name="' + b + '"]', root); return A.map((x, i) => [x.value.trim(), B[i].value.trim()]).filter((p) => p[0]); };
+          const pairs = (a, b, ka, kb) => { const A = $$('[name="' + a + '"]', root), B = $$('[name="' + b + '"]', root); return A.map((x, i) => ({[ka]: x.value.trim(), [kb]: B[i].value.trim()})).filter((p) => p[ka]); };
           const QB = $$('[name="faq_qb"]', root), AB = $$('[name="faq_ab"]', root);
-          const faq = $$('[name="faq_q"]', root).map((x, i) => [x.value.trim(), $$('[name="faq_a"]', root)[i].value.trim(), QB[i] ? QB[i].value.trim() : '', AB[i] ? AB[i].value.trim() : '']).filter((p) => p[0]);
+          const faq = $$('[name="faq_q"]', root).map((x, i) => ({q: x.value.trim(), a: $$('[name="faq_a"]', root)[i].value.trim(), qb: QB[i] ? QB[i].value.trim() : '', ab: AB[i] ? AB[i].value.trim() : ''})).filter((p) => p.q);
           await Store.saveSettings({
             clubName: g('clubName'), siteName: g('siteName'), logo, heroTitle: g('heroTitle'), heroText: g('heroText'), accent: form.elements.accent.value, defaultTheme: g('defaultTheme'),
             banner: { on: ck('banner_on'), text: g('banner_text'), textBn: g('banner_textBn'), link: g('banner_link') },
             sections: { countdown: ck('sec_countdown'), leaderboard: ck('sec_leaderboard'), sponsors: ck('sec_sponsors'), faq: ck('sec_faq'), visits: ck('sec_visits') },
             policy: { requireAccount: ck('pol_requireAccount'), saveDrafts: ck('pol_saveDrafts'), tracking: ck('pol_tracking') },
-            payments: pms, faq, sponsors: pairs('sp_n', 'sp_t'),
+            payments: pms, faq, sponsors: pairs('sp_n', 'sp_t', 'name', 'role'),
             heroTitleBn: g('heroTitleBn'), heroTextBn: g('heroTextBn'),
             assistant: { on: ck('ai_on'), name: g('ai_name') || 'Help desk', knowledge: g('ai_knowledge') },
             email: { on: ck('mail_on'), onConfirm: ck('mail_confirm'), onReceive: ck('mail_receive'), onPayReject: ck('mail_reject'), onPromote: ck('mail_promote'), senderName: g('mail_sender'), replyTo: g('mail_reply') },
