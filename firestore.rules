@@ -61,15 +61,15 @@ service cloud.firestore {
 
     match /accounts/{uid} {
       allow read: if isOrganizer() || (signedIn() && request.auth.uid == uid);
-      allow create: if signedIn() && request.auth.uid == uid && request.resource.data.get('blocked', false) == false;
+      allow create: if isOrganizer() || (signedIn() && request.auth.uid == uid && request.resource.data.get('blocked', false) == false);
       allow update: if isOrganizer() || (signedIn() && request.auth.uid == uid
         && !request.resource.data.diff(resource == null ? {} : resource.data).affectedKeys().hasAny(['blocked', 'email']));
       allow delete: if isOrganizer();
     }
 
     match /activity/{id} {
-      allow create: if request.resource.data.t is number
-        && request.resource.data.keys().hasOnly(['t', 'type', 'sid', 'vid', 'uid', 'dev', 'src', 'path', 'ev', 'ref', 'by', 'q']);
+      allow create: if isOrganizer() || (request.resource.data.t is number
+        && request.resource.data.keys().hasOnly(['t', 'type', 'sid', 'vid', 'uid', 'dev', 'src', 'path', 'ev', 'ref', 'by', 'q']));
       allow read, delete: if isOrganizer();
     }
 
@@ -102,7 +102,7 @@ service cloud.firestore {
     }
 
     match /drafts/{id} {
-      allow create, update: if request.resource.data.keys().hasOnly(['vid', 'eventId', 'step', 'stepName', 'name', 'email', 'phone', 'institution', 'teamName', 'uid', 'startedAt', 'updatedAt', 'dev']);
+      allow create, update: if isOrganizer() || request.resource.data.keys().hasOnly(['vid', 'eventId', 'step', 'stepName', 'name', 'email', 'phone', 'institution', 'teamName', 'uid', 'startedAt', 'updatedAt', 'dev']);
       allow delete: if true;
       allow read: if isOrganizer();
     }
