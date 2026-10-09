@@ -637,7 +637,7 @@ Every participant name, school, team name and transaction ID in the demo data is
 
 ## 11. Known limitations
 
-Written honestly, because a judge will find these anyway.
+Written honestly, because a judge will find these anyway.But it can be solved over time. 
 
 | Limitation | Detail |
 |---|---|
