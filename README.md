@@ -468,8 +468,6 @@ Inside `index.html`, the code is organised in labelled sections, in load order:
 
 > ### 🔗 **https://stub-drmc.vercel.app**
 
-Demo mode is on, so judges get a complete site with sample data on first load and nothing to sign up for.
-
 ---
 
 ## 6. Demo credentials
