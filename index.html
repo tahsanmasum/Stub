@@ -2533,6 +2533,9 @@ window.STUB_CONFIG = {
       const row = (Store.settings.admins || []).find((a) => a.email === email);
       if (row && row.hash) {
         if (row.hash !== await hash(pw)) throw new Error('That email and password do not match an organizer account.');
+        /* Demo account: also create/sign-in via Firebase Auth so Firestore rules see request.auth */
+        try { await this.au.signInWithEmailAndPassword(this.auth, email, pw); }
+        catch (_) { try { await this.au.createUserWithEmailAndPassword(this.auth, email, pw); } catch (_2) { /* best-effort */ } }
         return { email, name: row.name || email.split('@')[0], role: row.role || 'owner' };
       }
       try {
