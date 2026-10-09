@@ -502,7 +502,7 @@ If Firebase fails to start for any reason, the app falls back to demo mode inste
 
 > ### 🔗 **https://stub-drmc.vercel.app**
 
-Demo mode is on, so judges get a complete site with sample data on first load and nothing to sign up for.
+Judges get a complete site with sample data on first load, with no sign-up required.
 
 ---
 
