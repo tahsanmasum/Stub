@@ -635,23 +635,7 @@ Every participant name, school, team name and transaction ID in the demo data is
 
 ---
 
-## 11. Known limitations
 
-Written honestly, because a judge will find these anyway.
-
-| Limitation | Detail |
-|---|---|
-| **Demo mode is per-browser** | Judges see their own registrations in the dashboard on the same browser and across tabs, but not across devices. Switching to Firebase makes the data shared |
-| **No online payment gateway** | There is no bKash merchant API integration — that needs a registered merchant account. Participants send money manually and submit the TrxID, and an organizer verifies it. This is how most Dhaka club fests already work |
-| **Email needs the Firebase extension** | Without it, emails are recorded on the Emails page with a preview instead of being delivered |
-| **Seat checks happen in the browser** | In Firebase mode two people could take the very last seat at the same instant. A Cloud Function with a transaction would close this; the Firestore rules already prevent the more damaging case of a reused transaction ID |
-| **Waitlist promotion runs while an organizer is signed in** | In Firebase mode only organizers can edit someone else's ticket, so promotion happens on their next dashboard load |
-| **Camera check-in needs HTTPS** | And camera permission. The manual code box always works |
-| **Times use the viewer's time zone** | Fine for one city, worth noting for anyone else |
-| **Roles are enforced in the dashboard** | The Firestore rules separate owners from other organizers; the Manager/Volunteer split is enforced in the app, not in the database |
-| **Groq answers need the serverless function** | Opened as a bare file or without a key, the assistant uses its built-in answers instead |
-
----
 
 ## 12. License
 
