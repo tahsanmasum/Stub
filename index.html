@@ -452,7 +452,7 @@ a.tix:active{transform:scale(.985)}
 
 /* ---------- organizer ---------- */
 .org{display:grid;grid-template-columns:232px minmax(0,1fr);min-height:calc(100vh - 68px)}
-.org-side{border-right:1px solid var(--line-soft);padding:26px 16px;position:sticky;top:68px;height:calc(100vh - 68px);display:flex;flex-direction:column;gap:4px}
+.org-side{border-right:1px solid var(--line-soft);padding:26px 16px;position:sticky;top:68px;height:calc(100vh - 68px);display:flex;flex-direction:column;gap:4px;overflow-y:auto}
 .org-side .who{padding:0 12px 18px;margin-bottom:10px;border-bottom:1px solid var(--line-soft)}
 .org-side .who b{display:block;font-size:15px}
 .org-side .who span{font-size:13px;color:var(--faint);word-break:break-all}
@@ -1055,15 +1055,15 @@ service cloud.firestore {
 
     match /accounts/{uid} {
       allow read: if isOrganizer() || (signedIn() && request.auth.uid == uid);
-      allow create: if signedIn() && request.auth.uid == uid && request.resource.data.get('blocked', false) == false;
+      allow create: if isOrganizer() || (signedIn() && request.auth.uid == uid && request.resource.data.get('blocked', false) == false);
       allow update: if isOrganizer() || (signedIn() && request.auth.uid == uid
         && !request.resource.data.diff(resource == null ? {} : resource.data).affectedKeys().hasAny(['blocked', 'email']));
       allow delete: if isOrganizer();
     }
 
     match /activity/{id} {
-      allow create: if request.resource.data.t is number
-        && request.resource.data.keys().hasOnly(['t', 'type', 'sid', 'vid', 'uid', 'dev', 'src', 'path', 'ev', 'ref', 'by', 'q']);
+      allow create: if isOrganizer() || (request.resource.data.t is number
+        && request.resource.data.keys().hasOnly(['t', 'type', 'sid', 'vid', 'uid', 'dev', 'src', 'path', 'ev', 'ref', 'by', 'q']));
       allow read, delete: if isOrganizer();
     }
 
@@ -1096,7 +1096,7 @@ service cloud.firestore {
     }
 
     match /drafts/{id} {
-      allow create, update: if request.resource.data.keys().hasOnly(['vid', 'eventId', 'step', 'stepName', 'name', 'email', 'phone', 'institution', 'teamName', 'uid', 'startedAt', 'updatedAt', 'dev']);
+      allow create, update: if isOrganizer() || request.resource.data.keys().hasOnly(['vid', 'eventId', 'step', 'stepName', 'name', 'email', 'phone', 'institution', 'teamName', 'uid', 'startedAt', 'updatedAt', 'dev']);
       allow delete: if true;
       allow read: if isOrganizer();
     }
@@ -2238,7 +2238,12 @@ window.STUB_CONFIG = {
     async wipe() { await this.adapter.replaceAll(window.StubSeed.blank({ admins: this.settings.admins })); this.emit(); },
     async loadDemo() {
       const d = window.StubSeed.build(); await this._hashSeed(d);
-      if (this.settings.admins && this.settings.admins.length) d.settings.admins = this.settings.admins;
+      if (this.settings.admins && this.settings.admins.length) {
+        const cur = this.settings.admins;
+        const curEmails = new Set(cur.map((a) => a.email));
+        const extras = d.settings.admins.filter((a) => !curEmails.has(a.email));
+        d.settings.admins = [...cur.map((c) => { const s = d.settings.admins.find((x) => x.email === c.email); return s && s.hash ? { ...c, hash: s.hash } : c; }), ...extras];
+      }
       await this.adapter.replaceAll(d); this.applyLook(); this.emit();
     },
     async _hashSeed(d) {
@@ -2572,8 +2577,9 @@ window.STUB_CONFIG = {
         ops.push(['set', 'regs', { ...this._pubOf(r), id: r.id }]); ops.push(['set', 'tickets', r]);
         if (r.payment && r.payment.trxId) ops.push(['set', 'trx', { id: r.payment.trxId, ref: r.id, at: r.createdAt }]);
       });
-      const s = clean(db.settings); (s.admins || []).forEach((a) => { delete a.password; delete a.hash; });
+      const s = clean(db.settings); (s.admins || []).forEach((a) => { delete a.password; });
       s.adminEmails = (s.admins || []).map((a) => a.email); s.ownerEmails = (s.admins || []).filter((a) => a.role === 'owner').map((a) => a.email);
+      s.id = 'site';
       ops.push(['set', 'settings', s]);
       for (let i = 0; i < ops.length; i += 400) {
         const b = this.fs.writeBatch(this.db);
@@ -5122,7 +5128,7 @@ window.STUB_CONFIG = {
           if (e.target.closest('[data-restore]')) $('#restore-file', root).click();
           if (e.target.closest('[data-csv]')) exportCsv(Store.regs, 'all-registrations');
           if (e.target.closest('[data-wipe]') && await UI.confirm({ title: 'Start a fresh site?', text: 'Every fest, event, registration, payment record, account and analytics entry is deleted. Your team stays. This cannot be undone.', ok: 'Delete everything', cancel: 'Cancel', danger: true })) { await Store.wipe(); UI.toast('Site cleared. Let us set it up.'); location.hash = '#/organizer/overview'; Router.render(); }
-          if (e.target.closest('[data-demo]') && await UI.confirm({ title: 'Load the demo data?', text: 'Current fests, events and registrations are replaced with the sample set. Your team stays.', ok: 'Load demo', cancel: 'Cancel', danger: true })) { await Store.loadDemo(); UI.toast('Demo data loaded'); Router.render(); }
+          if (e.target.closest('[data-demo]') && await UI.confirm({ title: 'Load the demo data?', text: 'Current fests, events and registrations are replaced with the sample set. Your team stays.', ok: 'Load demo', cancel: 'Cancel', danger: true })) { try { await Store.loadDemo(); UI.toast('Demo data loaded'); Router.render(); } catch (err) { console.error('Load demo failed:', err); UI.toast('Load demo failed: ' + (err.message || err), 'bad'); } }
         });
         $('#restore-file', root).addEventListener('change', async (e) => {
           const file = e.target.files[0]; if (!file) return;
