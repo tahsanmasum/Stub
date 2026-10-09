@@ -461,44 +461,10 @@ Inside `index.html`, the code is organised in labelled sections, in load order:
 
 ---
 
-## 5. Setup instructions
-
-> Full step-by-step deployment, including Firebase and the email extension, is in **[DEPLOY.md](DEPLOY.md)**. This section is the short version.
-
-### Run it locally
-
-```bash
-git clone https://github.com/tahsanmasum/stub.git
-cd stub
-python3 -m http.server 8080      # or: npx serve .
-# open http://localhost:8080
-```
-
-The site opens with sample data straight away. No install, no build, no database.
-
-### Deploy to Vercel
-
-```bash
-npx vercel --prod
-```
-
-Accept the defaults. Vercel serves `index.html` and turns `api/assistant.js` into the assistant's endpoint automatically.
-
-### Then, optionally
-
-| Step | What it adds | Where |
-|---|---|---|
-| Add `GROQ_API_KEY` in Vercel | Conversational answers in the Ask button instead of built-in ones | [DEPLOY.md § Phase 3](DEPLOY.md#phase-3--groq-the-ask-button) |
-| Connect Firebase | Shared realtime data across every device, instead of per-browser demo data | [DEPLOY.md § Phase 4](DEPLOY.md#phase-4--firebase-the-real-backend) |
-| Install Trigger Email | Real confirmation emails from your own no-reply address | [DEPLOY.md § Phase 5](DEPLOY.md#phase-5--confirmation-emails-optional) |
-
-> The Groq key lives only in Vercel's environment variables. It is never in `index.html`, never in this repo, and never sent to the browser. Without it the assistant still answers from built-in logic.
-
-If Firebase fails to start for any reason, the app falls back to demo mode instead of showing a blank page.
 
 ---
 
-## 6. Deployment URL
+## 5. Deployment URL
 
 > ### 🔗 **https://stub-drmc.vercel.app**
 
@@ -506,7 +472,7 @@ Demo mode is on, so judges get a complete site with sample data on first load an
 
 ---
 
-## 7. Demo credentials
+## 6. Demo credentials
 
 Participants do **not** need an account — registration works as a guest. These are for the organizer dashboard. The sign-in page also has a one-click **Use this** link for each.
 
@@ -541,7 +507,7 @@ Participants do **not** need an account — registration works as a guest. These
 
 ---
 
-## 8. Third-party services and APIs
+## 7. Third-party services and APIs
 
 | Service | Used for | License / terms |
 |---|---|---|
@@ -559,7 +525,7 @@ Every asset in this repository is either original work, or carries one of the pe
 
 ---
 
-## 9. AI tools used
+## 8. AI tools used
 
 **Claude (Anthropic)** was used throughout development to plan the architecture, write the code, design the interface, generate the sample data, write this README, and run automated browser tests with Playwright that walk through registration, promo codes, waitlists, team invites, payments, cancellation, organizer actions and check-in — on desktop, tablet and mobile, in both themes and both languages.
 
@@ -569,7 +535,7 @@ Every participant name, school, team name and transaction ID in the demo data is
 
 ---
 
-## 10. Screenshots
+## 9. Screenshots
 
 > All screenshots are the light theme. The site also ships a dark theme — the toggle is in the header.
 
@@ -637,7 +603,7 @@ Every participant name, school, team name and transaction ID in the demo data is
 
 
 
-## 12. License
+## 10. License
 
 [MIT](LICENSE) © 2026 **Tahsan Masum Fahim**
 
@@ -645,7 +611,7 @@ Bundled fonts and libraries keep their own licenses, listed in [section 8](#8-th
 
 ---
 
-## 13. Rules and decisions
+## 11. Rules and decisions
 
 > The organizing authority reserves the right to make the final decision regarding rule interpretation, eligibility, judging, scoring, and any matters not explicitly covered in the contest guidelines. All decisions made by the judging panel and organizing authority are final.
 
