@@ -2525,9 +2525,13 @@ window.STUB_CONFIG = {
     logActivity(a) { this.fs.addDoc(this.fs.collection(this.db, 'activity'), a).catch((e) => console.warn('activity', e)); },
     async login(email, pw) {
       if (!Store.isAdminEmail(email)) throw new Error('This email is not on the organizer team.');
+      const row = (Store.settings.admins || []).find((a) => a.email === email);
+      if (row && row.hash) {
+        if (row.hash !== await hash(pw)) throw new Error('That email and password do not match an organizer account.');
+        return { email, name: row.name || email.split('@')[0], role: row.role || 'owner' };
+      }
       try {
         const cred = await this.au.signInWithEmailAndPassword(this.auth, email, pw);
-        const row = (Store.settings.admins || []).find((a) => a.email === email);
         return { email, name: (row && row.name) || cred.user.displayName || email.split('@')[0], role: (row && row.role) || 'owner' };
       } catch (e) { throw new Error('That email and password do not match an organizer account.'); }
     },
