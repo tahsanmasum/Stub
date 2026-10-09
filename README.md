@@ -70,19 +70,17 @@ The site loads with **4 fests, 11 events, ~300 registrations, 130 accounts and 2
    · [Task 3 — Organizer Management](#task-3--organizer-management-30-pts)
    · [Task 4 — Bonus, ranked](#task-4--bonus-30-pts--the-extra-features-ranked)
 4. [Tech stack](#4-tech-stack)
-5. [Setup instructions](#5-setup-instructions)
-6. [Deployment URL](#6-deployment-url)
-7. [Demo credentials](#7-demo-credentials)
+5. [Deployment URL](#5-deployment-url)
+6. [Demo credentials](#6-demo-credentials)
 
 </td>
 <td valign="top" width="50%">
 
-8. [Third-party services and APIs](#8-third-party-services-and-apis)
-9. [AI tools used](#9-ai-tools-used)
-10. [Screenshots](#10-screenshots)
-11. [Known limitations](#11-known-limitations)
-12. [License](#12-license)
-13. [Rules and decisions](#13-rules-and-decisions)
+7. [Third-party services and APIs](#7-third-party-services-and-apis)
+8. [AI tools used](#8-ai-tools-used)
+9. [Screenshots](#9-screenshots)
+10. [License](#10-license)
+11. [Rules and decisions](#11-rules-and-decisions)
 
 <br>
 
