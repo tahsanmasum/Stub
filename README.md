@@ -70,17 +70,19 @@ The site loads with **4 fests, 11 events, ~300 registrations, 130 accounts and 2
    · [Task 3 — Organizer Management](#task-3--organizer-management-30-pts)
    · [Task 4 — Bonus, ranked](#task-4--bonus-30-pts--the-extra-features-ranked)
 4. [Tech stack](#4-tech-stack)
-5. [Deployment URL](#5-deployment-url)
-6. [Demo credentials](#6-demo-credentials)
+5. [Setup instructions](#5-setup-instructions)
+6. [Deployment URL](#6-deployment-url)
+7. [Demo credentials](#7-demo-credentials)
 
 </td>
 <td valign="top" width="50%">
 
-7. [Third-party services and APIs](#7-third-party-services-and-apis)
-8. [AI tools used](#8-ai-tools-used)
-9. [Screenshots](#9-screenshots)
-10. [License](#10-license)
-11. [Rules and decisions](#11-rules-and-decisions)
+8. [Third-party services and APIs](#8-third-party-services-and-apis)
+9. [AI tools used](#9-ai-tools-used)
+10. [Screenshots](#10-screenshots)
+11. [Known limitations](#11-known-limitations)
+12. [License](#12-license)
+13. [Rules and decisions](#13-rules-and-decisions)
 
 <br>
 
@@ -459,16 +461,52 @@ Inside `index.html`, the code is organised in labelled sections, in load order:
 
 ---
 
+## 5. Setup instructions
+
+> Full step-by-step deployment, including Firebase and the email extension, is in **[DEPLOY.md](DEPLOY.md)**. This section is the short version.
+
+### Run it locally
+
+```bash
+git clone https://github.com/tahsanmasum/stub.git
+cd stub
+python3 -m http.server 8080      # or: npx serve .
+# open http://localhost:8080
+```
+
+The site opens with sample data straight away. No install, no build, no database.
+
+### Deploy to Vercel
+
+```bash
+npx vercel --prod
+```
+
+Accept the defaults. Vercel serves `index.html` and turns `api/assistant.js` into the assistant's endpoint automatically.
+
+### Then, optionally
+
+| Step | What it adds | Where |
+|---|---|---|
+| Add `GROQ_API_KEY` in Vercel | Conversational answers in the Ask button instead of built-in ones | [DEPLOY.md § Phase 3](DEPLOY.md#phase-3--groq-the-ask-button) |
+| Connect Firebase | Shared realtime data across every device, instead of per-browser demo data | [DEPLOY.md § Phase 4](DEPLOY.md#phase-4--firebase-the-real-backend) |
+| Install Trigger Email | Real confirmation emails from your own no-reply address | [DEPLOY.md § Phase 5](DEPLOY.md#phase-5--confirmation-emails-optional) |
+
+> The Groq key lives only in Vercel's environment variables. It is never in `index.html`, never in this repo, and never sent to the browser. Without it the assistant still answers from built-in logic.
+
+If Firebase fails to start for any reason, the app falls back to demo mode instead of showing a blank page.
 
 ---
 
-## 5. Deployment URL
+## 6. Deployment URL
 
 > ### 🔗 **https://stub-drmc.vercel.app**
 
+Demo mode is on, so judges get a complete site with sample data on first load and nothing to sign up for.
+
 ---
 
-## 6. Demo credentials
+## 7. Demo credentials
 
 Participants do **not** need an account — registration works as a guest. These are for the organizer dashboard. The sign-in page also has a one-click **Use this** link for each.
 
@@ -503,7 +541,7 @@ Participants do **not** need an account — registration works as a guest. These
 
 ---
 
-## 7. Third-party services and APIs
+## 8. Third-party services and APIs
 
 | Service | Used for | License / terms |
 |---|---|---|
@@ -521,7 +559,7 @@ Every asset in this repository is either original work, or carries one of the pe
 
 ---
 
-## 8. AI tools used
+## 9. AI tools used
 
 **Claude (Anthropic)** was used throughout development to plan the architecture, write the code, design the interface, generate the sample data, write this README, and run automated browser tests with Playwright that walk through registration, promo codes, waitlists, team invites, payments, cancellation, organizer actions and check-in — on desktop, tablet and mobile, in both themes and both languages.
 
@@ -531,7 +569,7 @@ Every participant name, school, team name and transaction ID in the demo data is
 
 ---
 
-## 9. Screenshots
+## 10. Screenshots
 
 > All screenshots are the light theme. The site also ships a dark theme — the toggle is in the header.
 
@@ -597,9 +635,25 @@ Every participant name, school, team name and transaction ID in the demo data is
 
 ---
 
+## 11. Known limitations
 
+Written honestly, because a judge will find these anyway.
 
-## 10. License
+| Limitation | Detail |
+|---|---|
+| **Demo mode is per-browser** | Judges see their own registrations in the dashboard on the same browser and across tabs, but not across devices. Switching to Firebase makes the data shared |
+| **No online payment gateway** | There is no bKash merchant API integration — that needs a registered merchant account. Participants send money manually and submit the TrxID, and an organizer verifies it. This is how most Dhaka club fests already work |
+| **Email needs the Firebase extension** | Without it, emails are recorded on the Emails page with a preview instead of being delivered |
+| **Seat checks happen in the browser** | In Firebase mode two people could take the very last seat at the same instant. A Cloud Function with a transaction would close this; the Firestore rules already prevent the more damaging case of a reused transaction ID |
+| **Waitlist promotion runs while an organizer is signed in** | In Firebase mode only organizers can edit someone else's ticket, so promotion happens on their next dashboard load |
+| **Camera check-in needs HTTPS** | And camera permission. The manual code box always works |
+| **Times use the viewer's time zone** | Fine for one city, worth noting for anyone else |
+| **Roles are enforced in the dashboard** | The Firestore rules separate owners from other organizers; the Manager/Volunteer split is enforced in the app, not in the database |
+| **Groq answers need the serverless function** | Opened as a bare file or without a key, the assistant uses its built-in answers instead |
+
+---
+
+## 12. License
 
 [MIT](LICENSE) © 2026 **Tahsan Masum Fahim**
 
@@ -607,7 +661,7 @@ Bundled fonts and libraries keep their own licenses, listed in [section 8](#8-th
 
 ---
 
-## 11. Rules and decisions
+## 13. Rules and decisions
 
 > The organizing authority reserves the right to make the final decision regarding rule interpretation, eligibility, judging, scoring, and any matters not explicitly covered in the contest guidelines. All decisions made by the judging panel and organizing authority are final.
 
